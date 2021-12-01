@@ -1,4 +1,18 @@
 <?php
-require_once 'Vue/VueItems.php';
+require 'vendor/autoload.php';
+use Illuminate\Database\Capsule\Manager as DB;
 
-echo \Vue\VueItems::afficherToutItem();
+$db = new DB();
+$db->addConnection( [
+    'driver' => 'mysql',
+    'host' => 'localhost',
+    'database' => 'php',
+    'username' => 'root',
+    'password' => '',
+    'charset' => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix' => ''
+] );
+$db->setAsGlobal();
+$db->bootEloquent();
+echo wishlist\Vue\VueItems::afficherToutItem();

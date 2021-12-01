@@ -1,8 +1,8 @@
 <?php
-namespace Controlleur;
-use Models\Item;
+namespace wishlist\Controlleur;
+use whishList\Models\Item as Item;
 
-require_once '../Models/Item.php';
+require_once './Models/Item.php';
 
 class ControlleurItems{
 

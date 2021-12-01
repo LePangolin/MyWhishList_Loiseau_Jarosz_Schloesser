@@ -1,23 +1,23 @@
 <?php
 
-namespace Vue;
-require_once '../Controlleur/ControlleurItems.php';
+namespace wishlist\Vue;
+use wishList\Controlleur\ControlleurItems as ControlleurItems;
 
 class VueItems{
 
     static function afficherToutItem(){
-        return '<!DOCTYPE html>
+        $tab_v = ControlleurItems::toutItems();
+        return"<!DOCTYPE html>
                     <html>
                         <head>
-                            <meta charset="UTF-8">
-                            <title>Liste des voitures</title>
+                            <meta charset=\"UTF-8\">
+                            <title>Liste des items</title>
                         </head>
                         <body>
                            <?php
-                                $tab_v = ControlleurItems::toutItems();
-                                vardump($tab_v);
+                                var_dump($tab_v);
                            ?>
                         </body>
-                     </html>';
+                     </html>";
     }
 }
