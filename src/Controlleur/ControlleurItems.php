@@ -1,12 +1,17 @@
 <?php
 namespace wishlist\Controlleur;
-use whishList\Models\Item as Item;
 
-require_once './Models/Item.php';
+use wishlist\Models\Item as Items;
+use wishlist\Vue\VueItems;
+
 
 class ControlleurItems{
 
     static function toutItems(){
-        return Item::get();
+        return Items::all();
+    }
+
+    static function afficherToutItem(){
+        return VueItems::afficherToutItem();
     }
 }

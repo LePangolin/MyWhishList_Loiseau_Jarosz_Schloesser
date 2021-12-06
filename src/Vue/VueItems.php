@@ -1,12 +1,17 @@
 <?php
 
 namespace wishlist\Vue;
-use wishList\Controlleur\ControlleurItems as ControlleurItems;
+
+use wishlist\Controlleur\ControlleurItems as ControlleurItems;
 
 class VueItems{
 
     static function afficherToutItem(){
         $tab_v = ControlleurItems::toutItems();
+        $ph = "";
+        foreach($tab_v as $value => $it){
+            $ph.= $value." : ".$it."<br>";
+        }
         return"<!DOCTYPE html>
                     <html>
                         <head>
@@ -15,7 +20,7 @@ class VueItems{
                         </head>
                         <body>
                            <?php
-                                var_dump($tab_v);
+                                <p>$ph</p>
                            ?>
                         </body>
                      </html>";
