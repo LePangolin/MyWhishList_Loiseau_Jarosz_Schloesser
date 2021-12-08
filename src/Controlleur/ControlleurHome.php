@@ -13,14 +13,22 @@ class ControlleurHome{
     public function welcome(Request $request, Response $response, array $array): Response{
 
         $tabUrl = array(
-            1 => "/hello/diego",
-            2 => "/hello/mama",
-            3 => "/hello/dadi",
-            4 => "/hello/sista"
+            1 => $this->c->router->pathFor("hello", ["name"=>"diego"])
         );
 
-        $html="<h1> Accueil du site WishList</h1>";
-        $html .= '<p><a href="$tabUrl[1]" </p>';
+        $html= <<<END
+            <!DOCTYPE html>
+            <html lang="fr">
+            <head>
+                <meta charset="UTF-8">
+                <title>MyWishList</title>
+            </head>
+            <body>
+            <h1> Accueil du site WishList</h1>
+            <p><a href=$tabUrl[1]>Diego</a></p>
+            </body>
+            </html>
+        END;
 
         $response->getBody()->write($html);
         return  $response;

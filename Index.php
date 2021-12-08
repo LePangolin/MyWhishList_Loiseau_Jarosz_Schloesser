@@ -24,7 +24,8 @@ $app = new \Slim\App($c);
 use wishlist\Controlleur\ControlleurHello as ControlleurHello;
 use wishlist\Controlleur\ControlleurHome as ControlleurHome;
 
-$app->get('/hello/{name}[/]', ControlleurHello::class.':sayHello');
+$app->get('/hello/{name}[/]', ControlleurHello::class.':sayHello')
+->setName("hello");
 
 $app->get('[/]', ControlleurHome::class.':welcome');
 
