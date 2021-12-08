@@ -1,5 +1,5 @@
 <?php
-namespace src\Controlleur;
+namespace wishlist\Controlleur;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
