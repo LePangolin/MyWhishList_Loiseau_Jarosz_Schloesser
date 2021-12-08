@@ -6,14 +6,13 @@ use \Psr\Http\Message\ResponseInterface as Response;
 class ControlleurHello{
     private $c ;
 
-    public function __construct(\Slim\Container $c{
+    public function __construct(\Slim\Container $c){
         $this->c=$c;
     }
 
     public function sayHello(Request $request, Response $response, array $array): Response{
-        
-
-
-        return  $response
+        $name= $array['name'];
+        $response -> getBody() -> write("Hello, $name");
+        return  $response;
     }
 }
