@@ -6,16 +6,7 @@ require_once 'vendor/autoload.php';
  */
 use Illuminate\Database\Capsule\Manager as DB;
 $db = new DB();
-$db->addConnection( [
-    'driver' => 'mysql',
-    'host' => 'localhost',
-    'database' => 'wish',
-    'username' => 'root',
-    'password' => '',
-    'charset' => 'utf8',
-    'collation' => 'utf8_unicode_ci',
-    'prefix' => ''
-] );
+$db->addConnection(parse_ini_file('src/Config/dbconfig.ini'));
 $db->setAsGlobal();
 $db->bootEloquent();
 //echo \wishlist\Controlleur\ControlleurItems::afficherToutItem();
