@@ -9,7 +9,6 @@ $db = new DB();
 $db->addConnection(parse_ini_file('src/Config/dbconfig.ini'));
 $db->setAsGlobal();
 $db->bootEloquent();
-//echo \wishlist\Controlleur\ControlleurItems::afficherToutItem();
 /**
  * FIN Eloquent
  */
@@ -23,9 +22,17 @@ $app = new \Slim\App($c);
 
 use wishlist\Controlleur\ControlleurHello as ControlleurHello;
 use wishlist\Controlleur\ControlleurHome as ControlleurHome;
+use wishlist\Controlleur\ControlleurListes as ControlleurListes;
+use wishlist\Controlleur\ControlleurItems as ControlleurItems;
 
 $app->get('/hello/{name}[/]', ControlleurHello::class.':sayHello')
 ->setName("hello");
+
+$app->get('/liste[/]', ControlleurListes::class.':toutListe')
+->setName("liste");
+
+$app->get('/item[/]', ControlleurItems::class.':afficherToutItem')
+    ->setName("item");
 
 $app->get('[/]', ControlleurHome::class.':welcome');
 

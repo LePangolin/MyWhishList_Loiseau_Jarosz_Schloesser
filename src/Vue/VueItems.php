@@ -9,9 +9,12 @@ class VueItems{
     static function afficherToutItem(){
         $tab_v = ControlleurItems::toutItems();
         $ph = "";
-        foreach($tab_v as $value => $it){
-            $ph.= $value." : ".$it."<br>";
+        foreach($tab_v as $it){
+            $ph.= $it->id." : ".$it->nom."<br>";
         }
+
+        //image : "<img style='width: 100px;' src=/MyWishList_Jarosz_Loiseau_Schloesser/img/".$it->img.">
+
         return"<!DOCTYPE html>
                     <html>
                         <head>
@@ -19,9 +22,7 @@ class VueItems{
                             <title>Liste des items</title>
                         </head>
                         <body>
-                           <?php
                                 <p>$ph</p>
-                           ?>
                         </body>
                      </html>";
     }

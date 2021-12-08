@@ -13,7 +13,9 @@ class ControlleurHome{
     public function welcome(Request $request, Response $response, array $array): Response{
 
         $tabUrl = array(
-            1 => $this->c->router->pathFor("hello", ["name"=>"diego"])
+            1 => $this->c->router->pathFor("hello", ["name"=>"diego"]),
+            2 => $this->c->router->pathFor("liste"),
+            3 => $this->c->router->pathFor("item")
         );
 
         $html= <<<END
@@ -25,7 +27,9 @@ class ControlleurHome{
             </head>
             <body>
             <h1> Accueil du site WishList</h1>
-            <p><a href=$tabUrl[1]>Diego</a></p>
+            <p><a href=$tabUrl[1]>Diego </a></p>
+            <p><a href=$tabUrl[2]>Afficher les listes (marche pas encore)</a></p>
+            <p><a href=$tabUrl[3]>Afficher les items</a></p>
             </body>
             </html>
         END;
