@@ -26,4 +26,8 @@ class VueItems{
                         </body>
                      </html>";
     }
+
+    static function afficherUnItem(){
+
+    }
 }

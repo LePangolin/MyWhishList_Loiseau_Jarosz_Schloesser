@@ -2,20 +2,23 @@
 namespace wishlist\Controlleur;
 
 use wishlist\Models\Liste as Liste;
-use wishlist\Vue\VueItems;
+use wishlist\Vue\VueListes;
 
 
 class ControlleurListes{
 
-    public function __construct(\Slim\Container $c){
-        $this->c=$c;
+
+    static function getC(){
+        $config = require_once "src/Config/settings.php"; //correspond au contenu de settings.php
+        $c = new \Slim\Container($config);
+        return $c;
     }
 
-    static function toutLitses(){
+    static function toutListes(){
         return Liste::all();
     }
 
-    static function afficherToutItem(){
+    static function afficherToutesListes(){
         return VueListes::afficherToutesListes();
     }
 }

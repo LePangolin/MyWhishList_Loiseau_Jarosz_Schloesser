@@ -28,7 +28,7 @@ class ControlleurHome{
             <body>
             <h1> Accueil du site WishList</h1>
             <p><a href=$tabUrl[1]>Diego </a></p>
-            <p><a href=$tabUrl[2]>Afficher les listes (marche pas encore)</a></p>
+            <p><a href=$tabUrl[2]>Afficher les listes</a></p>
             <p><a href=$tabUrl[3]>Afficher les items</a></p>
             </body>
             </html>
