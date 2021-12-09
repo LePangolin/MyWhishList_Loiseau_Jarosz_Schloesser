@@ -20,10 +20,10 @@ $config = require_once "src/Config/settings.php"; //correspond au contenu de set
 $c = new \Slim\Container($config);
 $app = new \Slim\App($c);
 
-use wishlist\Controlleur\ControlleurHello as ControlleurHello;
-use wishlist\Controlleur\ControlleurHome as ControlleurHome;
-use wishlist\Controlleur\ControlleurListes as ControlleurListes;
-use wishlist\Controlleur\ControlleurItems as ControlleurItems;
+use wishlist\Controlleur\ControlleurHello;
+use wishlist\Controlleur\ControlleurHome;
+use wishlist\Controlleur\ControlleurListes;
+use wishlist\Controlleur\ControlleurItems;
 
 $app->get('/hello/{name}[/]', ControlleurHello::class.':sayHello')
     ->setName("hello");

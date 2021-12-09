@@ -1,21 +1,24 @@
 <?php
 namespace wishlist\Vue;
 
+use Slim\Container;
 use wishlist\Controlleur\ControlleurListes as ControlleurListes;
 
 class VueListes{
+    private Container $c;
+    public function __construct(Container $c){
+        $this->c = $c;
+    }
 
-    static function afficherToutesListes(){
+    function afficherToutesListes(){
         $tab_v = ControlleurListes::toutListes();
         $ph = "";
         foreach($tab_v as $it){
             $ph.= $it->no." : ".$it->titre."<br>";
         }
 
-        $chemin = ControlleurListes::getC()->router->pathFor("home");
-
         $tabUrl = array(
-            1=>$chemin
+            1=>$this->c->router->pathFor("home")
         );
 
         return"<!DOCTYPE html>
