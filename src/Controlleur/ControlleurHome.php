@@ -14,7 +14,7 @@ class ControlleurHome{
 
         $tabUrl = array(
             1 => $this->c->router->pathFor("hello", ["name"=>"Lucas"]),
-            2 => $this->c->router->pathFor("liste"),
+            2 => $this->c->router->pathFor("listeAll"),
             3 => $this->c->router->pathFor("item")
         );
 

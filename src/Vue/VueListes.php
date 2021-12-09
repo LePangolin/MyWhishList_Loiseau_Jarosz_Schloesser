@@ -13,13 +13,15 @@ class VueListes{
     function afficherToutesListes(){
         $tab_v = ControlleurListes::toutListes();
         $ph = "";
-        foreach($tab_v as $it){
-            $ph.= $it->no." : ".$it->titre."<br>";
-        }
 
         $tabUrl = array(
             1=>$this->c->router->pathFor("home")
         );
+        foreach($tab_v as $it){
+            $ph.= $it->no." : ".$it->titre."<br>";
+        }
+
+
 
         return"<!DOCTYPE html>
                     <html>
