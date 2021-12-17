@@ -34,7 +34,8 @@ $app->get('/hello/{name}[/]', ControlleurHello::class.':sayHello')
 /**
  * liste
  */
-
+$app->get('/liste/{no}[/]', ControlleurListes::class.':afficherToutesListes')
+    ->setName("listeUnite");
 
 $app->get('/liste[/]', ControlleurListes::class.':afficherToutesListes')
     ->setName("listeAll");
@@ -42,8 +43,11 @@ $app->get('/liste[/]', ControlleurListes::class.':afficherToutesListes')
 /**
  * item
  */
+$app->get('/item/{id}[/]', ControlleurItems::class.':afficherUnItem')
+    ->setName("itemUnite");
+
 $app->get('/item[/]', ControlleurItems::class.':afficherToutItem')
-    ->setName("item");
+    ->setName("itemAll");
 
 /**
  * home
