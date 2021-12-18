@@ -2,11 +2,12 @@
 namespace wishlist\Controlleur;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
+use \Slim\Container;
 
 class ControlleurHello{
     private $c ;
 
-    public function __construct(\Slim\Container $c){
+    public function __construct(Container $c){
         $this->c=$c;
     }
 
