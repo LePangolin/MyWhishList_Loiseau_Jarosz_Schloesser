@@ -10,29 +10,40 @@ class VueListes{
         $this->c = $c;
     }
 
-    function afficherToutesListes(){
+    function afficher($no=null){
         $tab_v = ControlleurListes::toutListes();
         $ph = "";
 
         $tabUrl = array(
-            1=>$this->c->router->pathFor("home")
+            1=>$this->c->router->pathFor("home"),
+            2=>$this->c->router->pathFor("listeAll")
         );
         foreach($tab_v as $it){
-            $ph.= $it->no." : ".$it->titre."<br>";
+            $url = $this->c->router->pathFor( 'listeUnite', ['no'=> $it->no] ) ;
+            $ph.= "<a class='link-info' href='".$url."'> " . $it->no . " : " . $it->titre . "</a><br>";
         }
 
         $vue = new VueHTML($this->c);
 
-
-        return($vue->getNav().<<<END
+        if($no==null){
+            $res = <<<END
                         <body>
                                 <h1>Exemple de listes</h1>
                                 
                                 <p>$ph</p>
                                 
-                                <p><a class='btn btn-outline-dark text-light' href="$tabUrl[1]" role='button'>Voir un exemple de liste</a></p>
+                                <p><a class='btn btn-outline-dark text-light' href="$tabUrl[1]" role='button'>Retour à l'accueil</a></p>
                         </body>
                      </html>
-                     END.$vue->getFooter());
+                     END;
+        } else {
+            $res = <<<END
+                <h2>fonction non terminée<h2>
+                <p><a class='btn btn-outline-dark text-light' href="$tabUrl[2]" role='button'>Voir un autre exemple de liste</a></p>
+                <p><a class='btn btn-outline-dark text-light' href="$tabUrl[1]" role='button'>Retour à l'accueil</a></p>
+                END;
+        }
+
+        return($vue->getNav().$res.$vue->getFooter());
     }
 }

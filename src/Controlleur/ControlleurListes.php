@@ -1,6 +1,8 @@
 <?php
 namespace wishlist\Controlleur;
 
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Container;
 use wishlist\Models\Liste as Liste;
 use wishlist\Vue\VueListes;
@@ -16,8 +18,14 @@ class ControlleurListes{
         return Liste::all();
     }
 
-    function afficherToutesListes(){
+    function afficherToutesListes(Request $request, Response $response, array $array){
         $vue = new VueListes($this->c);
-        return $vue->afficherToutesListes();
+        return $vue->afficher();
+    }
+
+    function afficherUneListe(Request $request, Response $response, array $array){
+        $no = $array['no'];
+        $vue = new VueListes($this->c);
+        return $vue->afficher($no);
     }
 }
