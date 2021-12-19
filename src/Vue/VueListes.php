@@ -21,21 +21,18 @@ class VueListes{
             $ph.= $it->no." : ".$it->titre."<br>";
         }
 
+        $vue = new VueHTML($this->c);
 
 
-        return"<!DOCTYPE html>
-                    <html>
-                        <head>
-                            <meta charset=\"UTF-8\">
-                            <title>Liste des Listes</title>
-                        </head>
+        return($vue->getNav().<<<END
                         <body>
-                                <h1>Liste des listes</h1>
+                                <h1>Exemple de listes</h1>
                                 
                                 <p>$ph</p>
                                 
-                                <p><a href=$tabUrl[1]>Retour à la page d'accueuil</a></p>
+                                <p><a class='btn btn-outline-dark text-light' href="$tabUrl[1]" role='button'>Voir un exemple de liste</a></p>
                         </body>
-                     </html>";
+                     </html>
+                     END.$vue->getFooter());
     }
 }

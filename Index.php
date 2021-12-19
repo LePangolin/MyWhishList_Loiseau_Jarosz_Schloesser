@@ -34,7 +34,7 @@ $app->get('/hello/{name}[/]', ControlleurHello::class.':sayHello')
 /**
  * liste
  */
-$app->get('/liste/{no}[/]', ControlleurListes::class.':afficherToutesListes')
+$app->get('/liste/{no}[/]', ControlleurListes::class.':afficherUneListe')
     ->setName("listeUnite");
 
 $app->get('/liste[/]', ControlleurListes::class.':afficherToutesListes')

@@ -12,7 +12,7 @@ class VueItems{
         $this->c = $c;
     }
 
-    function afficherToutItem($id=null){
+    function afficherItem($id=null){
         $tab_v = ControlleurItems::toutItems();
 
         $UrlHome=$this->c->router->pathFor("home");

@@ -20,12 +20,12 @@ class ControlleurItems{
 
     function afficherToutItem(Request $request, Response $response, array $array): string{
         $vue = new VueItems($this->c);
-        return $vue->afficherToutItem();
+        return $vue->afficherItem();
     }
 
     function afficherUnItem(Request $request, Response $response, array $array): string{
         $id = $array['id'];
         $vue = new VueItems($this->c);
-        return $vue->afficherToutItem($id);
+        return $vue->afficherItem($id);
     }
 }
