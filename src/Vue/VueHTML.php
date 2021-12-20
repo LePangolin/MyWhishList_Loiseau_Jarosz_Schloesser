@@ -28,13 +28,11 @@ class VueHTML{
             
                 <title>MyWishList</title>
                 <style>
-            
-                    footer{
-                        bottom: 0;
-                        width: 100% ;
-                        position: absolute;
+                    
+                    main {
+	                   flex: 1;
                     }
-            
+                    
                 </style>
             </head>
             
@@ -61,12 +59,14 @@ class VueHTML{
                     </div>
                 </div>
             </nav>
+            <main><!--Contient le contenu de nos requêtes-->
             ';
     }
 
     public function getFooter(): string{
         return
         <<<END
+            </main>
             <!-- Option 1: Bundle with Popper -->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
             

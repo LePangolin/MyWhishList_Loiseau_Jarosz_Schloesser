@@ -51,10 +51,12 @@ class VueListes{
                 }
             }
             $res = <<<END
-                <h2>"Contenu de la liste n°$no"<h2>
-                <p>$ph</p>
-                <p><a class='btn btn-outline-dark text-light' href="$tabUrl[2]" role='button'>Voir un autre exemple de liste</a></p>
-                <p><a class='btn btn-outline-dark text-light' href="$tabUrl[1]" role='button'>Retour à l'accueil</a></p>
+                <container>
+                    <h2>"Contenu de la liste n°$no"<h2>
+                    <p>$ph</p>
+                    <p><a class='btn btn-outline-dark text-light' href="$tabUrl[2]" role='button'>Voir un autre exemple de liste</a></p>
+                    <p><a class='btn btn-outline-dark text-light' href="$tabUrl[1]" role='button'>Retour à l'accueil</a></p>    
+                </container>
                 END;
         }
 
