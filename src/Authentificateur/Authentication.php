@@ -34,7 +34,7 @@ class Authentication{
         $query = "Select count(*) as nb, uid,username from users where username = $user and $pass";
         $st = self::$connexion->prepare($query)->execute();
         while($row = $st->fetch(PDO::FETCH_ASSOC)){
-            if ($row['nb'] = 0){
+            if (!$row['nb'] == 0){
                 self::$utilisateur->nom = $row['username'];
                 self::$utilisateur->id =$row['uid'];
                 self::loadProfile($row['uid']);
