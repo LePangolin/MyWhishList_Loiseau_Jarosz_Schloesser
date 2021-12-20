@@ -1,6 +1,6 @@
 <?php
 require_once 'vendor/autoload.php';
 
-use whishlist\Authentificateur\Authentification;
+use whishlist\Authentificateur\Authentication;
 
-Authentification::createUser("Admin","AdminPasss");
+Authentication::createUser("Admin","AdminPasss");
