@@ -29,8 +29,11 @@ class VueHTML{
                 <title>MyWishList</title>
                 <style>
                     
-                    main {
-	                   flex: 1;
+                    body {
+                        margin: 0;
+                        min-height: 100vh;
+                        display: grid;
+                        grid-template-rows: auto 1fr auto;
                     }
                     
                 </style>
