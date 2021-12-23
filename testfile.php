@@ -6,12 +6,9 @@ use wishlist\Authentificateur\Authentication;
 
 Authentication::init();
 Authentication::createUser("Admin","1234567891011");
+echo "<br> Avec mauvais identifiant :<br>";
 Authentication::authenticate("Admin","1");
+echo "<br> Avec bon identifiant :<br>";
+Authentication::authenticate("Admin","1234567891011");
 echo "<br>";
-if(isset($_SESSION['profile']) == null){
-    echo "Erreurs de connexion";
-}else{
-    echo "Connexion réussi";
-}
-
 session_destroy();

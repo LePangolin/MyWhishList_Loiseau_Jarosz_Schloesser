@@ -38,13 +38,13 @@ class Authentication{
         $query = "Select uid,username from users where username = ? and passwd = ?";
         $st = self::$connexion->prepare($query);
         $st->execute([$user,$pass]);
-        try {
-            while($row = $st->fetch(PDO::FETCH_ASSOC)){
-                self::$utilisateur = new Uttilisateur($row['username'],$row['uid']);
-                self::loadProfile($row['uid']);
-            }
-        }catch (\Exception $e){
-                echo "Erreur lors de la connexion : Le nom d'uttilisateur ou le mot de passe est incorrect";
+        $row = $st->fetch(PDO::FETCH_ASSOC);
+        if($row != null) {
+            echo "Connexion réussis !";
+            self::$utilisateur = new Uttilisateur($row['username'], $row['uid']);
+            self::loadProfile($row['uid']);
+        }else{
+            echo "Erreur de connexion : uttilisateur ou mot de passe incorrecte";
         }
     }
 
