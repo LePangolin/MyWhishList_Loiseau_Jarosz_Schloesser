@@ -12,10 +12,14 @@ class VueItems{
         $this->c = $c;
     }
 
-    function afficherItem($id=null){
+    function afficherItem($id=null, $no){
         $tab_v = ControlleurItems::toutItems();
 
-        $UrlHome=$this->c->router->pathFor("home");
+        $vue = new VueHTML($this->c);
+
+        $tabUrl = array(
+            1=>$this->c->router->pathFor("listeUnite", ["no"=> $no])
+        );
 
         $ph="";
 
@@ -35,10 +39,10 @@ class VueItems{
                 }
 
             }
-            $ph .= "<br><a href=$url> retour à l'affichage des items</a>";
+
         }
 
-        return"<!DOCTYPE html>
+        return($vue->getNav()."<!DOCTYPE html>
                     <html>
                         <head>
                             <meta charset=\"UTF-8\">
@@ -49,9 +53,9 @@ class VueItems{
                         
                                 <p>$ph</p>
                                 
-                                <p><a href=$UrlHome>Retour à la page d'accueuil</a></p>
+                                <a class='btn btn-outline-dark text-light' href=$tabUrl[1] role=button>Retour à la liste</a>
                         </body>
-                     </html>";
+                     </html>".$vue->getFooter());
 
     }
 }

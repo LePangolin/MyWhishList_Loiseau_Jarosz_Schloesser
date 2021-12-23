@@ -34,6 +34,7 @@ class VueHTML{
                         min-height: 100vh;
                         display: grid;
                         grid-template-rows: auto 1fr auto;
+                        text-align: center;
                     }
                     
                 </style>
@@ -43,7 +44,7 @@ class VueHTML{
             <!-- Barre de Navigation -->
             <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
                 <div class="container px-0 px-lg-0">
-                    <a class="navbar-brand" href="#!">MyWishList</a>
+                    <a class="navbar-brand" href="http://localhost/MyWishList_Jarosz_Loiseau_Schloesser/">MyWishList</a>
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="navbar-collapse collapse" id="navbarSupportedContent" style="">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -77,7 +78,7 @@ class VueHTML{
             <footer class="py-1 bg-dark text-center">
                 <button type="button" class="btn btn-outline-secondary">A propos de nous</button>
                 <button type="button" class="btn btn-outline-secondary">Fonctionnalitées réalisées</button>
-                <div class="container"><p class="m-0 text-center text-white">Copyright &copy; JLM</p></div>
+                <div class="container"><p class="m-0 text-center text-white">Copyright &copy; JLS</p></div>
             </footer>
             </body>
             </html>

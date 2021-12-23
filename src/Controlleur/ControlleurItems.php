@@ -25,7 +25,8 @@ class ControlleurItems{
 
     function afficherUnItem(Request $request, Response $response, array $array): string{
         $id = $array['id'];
+        $no = $array['no'];
         $vue = new VueItems($this->c);
-        return $vue->afficherItem($id);
+        return $vue->afficherItem($id, $no);
     }
 }

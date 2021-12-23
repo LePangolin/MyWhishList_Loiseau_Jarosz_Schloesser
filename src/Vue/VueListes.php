@@ -15,12 +15,9 @@ class VueListes{
         $tab_v = ControlleurListes::toutListes();
         $tab_i = ControlleurItems::toutItems();
         $ph = "";
-
         $tabUrl = array(
-            1=>$this->c->router->pathFor("home"),
-            2=>$this->c->router->pathFor("listeAll")
+            1=>$this->c->router->pathFor("listeAll")
         );
-
 
 
         $vue = new VueHTML($this->c);
@@ -28,32 +25,38 @@ class VueListes{
         if($no==null){
             foreach($tab_v as $it){
                 $url = $this->c->router->pathFor( 'listeUnite', ['no'=> $it->no] ) ;
-                $ph.= "<a class='link-info' href='".$url."'> " . $it->no . " : " . $it->titre . "</a><br>";
+                $ph.= "<a class='link-info' href='".$url."'> " . $it->titre . "</a><br>";
             }
             $res = <<<END
                         <body>
-                                <h1>Exemple de listes</h1>
+                                <h1>Listes publiques</h1>
                                 
                                 <p>$ph</p>
                                 
-                                <p><a class='btn btn-outline-dark text-light' href="$tabUrl[1]" role='button'>Retour à l'accueil</a></p>
                         </body>
                      
                      END;
         } else {
-            foreach ($tab_i as $item){
-                $url = $this->c->router->pathFor( 'itemUnite' , ['id' => $item->id]);
-                if($item->liste_id == $no){
-                    $ph .= "<h2>$item->nom</h2>".
-                        "<img style='width: 100px;' src=/MyWishList_Jarosz_Loiseau_Schloesser/img/".$item->img.">".
-                        "<p>$item->descr</p>"." "."<p>$item->tarif</p>";
 
+            foreach ($tab_i as $item){
+
+                $url = $this->c->router->pathFor( 'itemUnite' , ['no'=> $no, 'id' => $item->id]);
+                if($item->liste_id == $no){
+                    $ph .= "<h3>"  . $item->nom . "</h3>".
+                        "<img style='width: 200px;' src=/MyWishList_Jarosz_Loiseau_Schloesser/img/".$item->img.">".
+                        "<p>état de réservation : $item->tarif <br> <a href=$url class='link-info'> en savoir plus </a></p>"; //changer tarif
+                }
+            }
+
+            foreach($tab_v as $li){
+
+                if($li->no == $no){
+                    $infoListe="<h1>$li->titre</h1><h2>$li->description</h2>";
                 }
             }
             $res = <<<END
                 <container>
-                    <h2>"Contenu de la liste n°$no"<h2>
-                    <p>$ph</p>
+                    <p>$infoListe $ph</p>
                     <p><a class='btn btn-outline-dark text-light' href="$tabUrl[2]" role='button'>Voir un autre exemple de liste</a></p>
                     <p><a class='btn btn-outline-dark text-light' href="$tabUrl[1]" role='button'>Retour à l'accueil</a></p>    
                 </container>
