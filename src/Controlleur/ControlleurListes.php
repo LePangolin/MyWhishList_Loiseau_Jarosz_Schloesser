@@ -5,6 +5,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Container;
 use wishlist\Models\Liste as Liste;
+use wishlist\Vue\VueListeCreation;
 use wishlist\Vue\VueListes;
 
 
@@ -27,4 +28,10 @@ class ControlleurListes{
         $vue = new VueListes($this->c);
         return $vue->afficher(1);
     }
+
+    function creeListe(Request $request, Response $response, array $array){
+        $vue = new VueListeCreation($this->c);
+        return $vue->afficher();
+    }
+
 }

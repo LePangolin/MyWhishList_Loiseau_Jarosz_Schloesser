@@ -14,8 +14,9 @@ class VueHTML{
     }
 
     public function getNav():string{
+        $urlCreaListe = $this->c->router->pathFor("creatListe");
         return
-            '
+            <<<END
             <!doctype html>
             <html lang="fr">
             <head>
@@ -48,7 +49,7 @@ class VueHTML{
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="navbar-collapse collapse" id="navbarSupportedContent" style="">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                            <li class="nav-item"><a class="nav-link " href="#!">Créer une liste</a></li>
+                            <li class="nav-item"><a class="nav-link " href="$urlCreaListe">Créer une liste</a></li>
                             <li class="nav-item"><a class="nav-link " href="#!">Mes listes</a></li>
                             <li class="nav-item"><a class="nav-link " href="#!">Comment ça marche ?</a></li>
                             <li class="nav-item dropdown">
@@ -64,7 +65,7 @@ class VueHTML{
                 </div>
             </nav>
             <main><!--Contient le contenu de nos requêtes-->
-            ';
+            END;
     }
 
     public function getFooter(): string{

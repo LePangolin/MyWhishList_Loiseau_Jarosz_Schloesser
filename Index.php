@@ -44,6 +44,12 @@ $app->get('/liste[/]', ControlleurListes::class.':afficherToutesListes')
     ->setName("listeAll");
 
 /**
+ * Création Liste
+ */
+$app->get('/#1[/]', ControlleurListes::class.':creeListe')
+    ->setName("creatListe");
+
+/**
  * item
  */
 
@@ -58,6 +64,10 @@ $app->get('[/]', ControlleurHome::class.':welcome')
     ->setName("home");
 
 $app->run();
+
+
+
+
 /**
  * FIN Slim 3
  */
