@@ -26,7 +26,7 @@ class ControlleurListes{
 
     function afficherUneListe(Request $request, Response $response, array $array){
         $vue = new VueListes($this->c);
-        return $vue->afficher(1);
+        return $vue->afficher($array['no']);
     }
 
     function creeListe(Request $request, Response $response, array $array){

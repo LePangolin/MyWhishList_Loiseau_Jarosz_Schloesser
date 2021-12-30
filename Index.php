@@ -46,7 +46,7 @@ $app->get('/liste[/]', ControlleurListes::class.':afficherToutesListes')
 /**
  * Création Liste
  */
-$app->get('/#1[/]', ControlleurListes::class.':creeListe')
+$app->get('/creat[/]', ControlleurListes::class.':creeListe')
     ->setName("creatListe");
 
 /**
