@@ -50,7 +50,7 @@ class VueListeCreation
                             <title>Création Liste</title>
                 </header> 
                 <form>
-                  <p></p>
+                  <p><br></p>
                   <label>Nom de la liste</label>
                   <input class="form-control-sm" id="titre" placeholder="Entrez le nom de la liste">
                   <p></p>
