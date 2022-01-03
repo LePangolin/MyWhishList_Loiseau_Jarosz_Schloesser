@@ -49,7 +49,9 @@ class VueListeCreation
                     <meta charset=\"UTF-8\">
                             <title>Création Liste</title>
                 </header> 
-                <form>
+                <form>  
+                  <p><br></p>
+                  <h1> Création de la liste </h1>
                   <p><br></p>
                   <label>Nom de la liste</label>
                   <input class="form-control-sm" id="titre" placeholder="Entrez le nom de la liste">
