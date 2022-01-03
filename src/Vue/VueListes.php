@@ -57,8 +57,7 @@ class VueListes{
             $res = <<<END
                 <container>
                     <p>$infoListe $ph</p>
-                    <p><a class='btn btn-outline-dark text-light' href="$tabUrl[2]" role='button'>Voir un autre exemple de liste</a></p>
-                    <p><a class='btn btn-outline-dark text-light' href="$tabUrl[1]" role='button'>Retour à l'accueil</a></p>    
+                    <p><a class='btn btn-outline-dark text-light' href="$tabUrl[1]" role='button'>Voir un autre exemple de liste</a></p>
                 </container>
                 END;
         }

@@ -15,6 +15,7 @@ class VueListeCreation
         $vue = new VueHTML($this->container);
         return ($vue->getNav().
             <<<END
+            <!--
                 <!DOCTYPE html>
                     <html>
                 <header class="bg-secondary py-1 bg-opacity-40">
@@ -41,6 +42,39 @@ class VueListeCreation
                 </script>
                 </body>
             </html>
+            -->
+            <!DOCTYPE html>
+                    <html>
+                <header class="bg-secondary py-1 bg-opacity-40">
+                    <meta charset=\"UTF-8\">
+                            <title>Création Liste</title>
+                </header> 
+                <form>
+                  <p></p>
+                  <label>Nom de la liste</label>
+                  <input class="form-control-sm" id="titre" placeholder="Entrez le nom de la liste">
+                  <p></p>
+                  <label>Description</label>
+                  <input class="form-control-sm" id="descr" placeholder="Description de la liste">
+                  <p></p>
+                  <label>Date d'expiration</label>
+                  <input type="date" id="date">
+                  <p></p>
+                  <button type="button" onclick="getValues();">Créer ma nouvelle liste !</button>
+
+                </form>
+                <script>
+                    function getValues(){
+                        var titre = document.getElementsById("titre");
+                        var description = document.getElementsById("descr");
+                        var expiration = document.getElementsById("date");
+                        
+                        alert(titre);
+                        alert(description);
+                        alert(expiration);
+                    }
+                </script>
+                </html>
             END
         .$vue->getFooter());
     }
