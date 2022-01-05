@@ -71,12 +71,17 @@ class VueListes{
      * @param null $idUser : id de l'utilisateur
      * le parametre permet de savoir si l'utilisateur est connecté ou non
      */
-    /*function afficherPerso($idUser=null){
+    function afficherPerso($idUser=null){
+
         $vue = new VueHTML($this->c);
 
         if ($idUser==null){
             $res = <<<END
-                <p>l'utilisateur n'est pas connecté</p>
+            <br>
+            <h2>Vous n'êtes pas connecté</h2>
+            <p>Veuillez entrer le token de la liste privé dont vous voulez accéder</p>
+            <input><br>
+            <button>Acceder à la liste</button>
             END;
 
         } else {
@@ -87,5 +92,5 @@ class VueListes{
         }
 
         return($vue->getNav().$res.$vue->getFooter());
-    }*/
+    }
 }

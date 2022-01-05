@@ -19,11 +19,11 @@ class ControlleurListes{
         return Liste::all();
     }
 
-    /*function afficherListeUtilisateur(Request $request, Response $response, array $array){
+    function afficherListeUtilisateur(Request $request, Response $response, array $array){
         $vue = new VueListes($this->c);
         $idUser = isset($_SESSION['profile']['userid']);
         return $vue->afficherPerso($idUser);
-    }*/
+    }
 
     function afficherToutesListes(Request $request, Response $response, array $array){
         $vue = new VueListes($this->c);
