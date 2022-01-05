@@ -15,6 +15,7 @@ class VueHTML{
 
     public function getNav():string{
         $urlCreaListe = $this->c->router->pathFor("creatListe");
+        $urlConnexion = $this->c->router->pathFor("Connexion");
         return
             <<<END
             <!doctype html>
@@ -55,7 +56,7 @@ class VueHTML{
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mon Compte</a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#!">Connexion</a></li>
+                                    <li><a class="dropdown-item" href="$urlConnexion">Connexion</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="#!">Créer un comte</a></li>
                                 </ul>
