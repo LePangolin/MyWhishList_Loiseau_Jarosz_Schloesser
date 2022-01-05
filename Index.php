@@ -42,6 +42,13 @@ $app->get('/liste/[/]', ControlleurListes::class.':afficherToutesListes')
     ->setName("listeAll");
 
 /**
+ * Connexion
+ */
+$app->get('/connexion[/]',\wishlist\Controlleur\ControlleurConnexion::class.'connexion')
+    ->setName('Connexion');
+
+
+/**
  * Création Liste
  */
 $app->get('/creat[/]', ControlleurListes::class.':creeListe')
