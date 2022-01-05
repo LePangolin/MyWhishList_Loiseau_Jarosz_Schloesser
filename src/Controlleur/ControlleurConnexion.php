@@ -16,4 +16,9 @@ class ControlleurConnexion{
         $vue = new VueConnexion($this->c);
         return $vue->afficherConnexion();
     }
+
+    public function creer(Request $request, Response $response, array $array){
+        $vue = new VueConnexion($this->c);
+        return $vue->afficherConnexion();
+    }
 }

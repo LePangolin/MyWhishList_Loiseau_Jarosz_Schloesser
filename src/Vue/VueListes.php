@@ -77,16 +77,24 @@ class VueListes{
 
         if ($idUser==null){
             $res = <<<END
-            <br>
-            <h2>Vous n'êtes pas connecté</h2>
+            <p></p><br>
+            <h1>Vous n'êtes pas connecté</h1>
             <p>Veuillez entrer le token de la liste privé dont vous voulez accéder</p>
             <input><br>
             <button>Acceder à la liste</button>
             END;
 
         } else {
+            $userName=$_SESSION['profile']['username'];
+
             $res = <<<END
-                <p>l'utilisateur est connecté</p>
+            <h1>Bonjour $userName</h1>
+            <h2>Vos listes :</h2>
+
+            <h2>Accès à une liste privée</h2>
+            <p>Veuillez entrer le token de la liste privé dont vous voulez accéder</p>
+            <input><br>
+            <button>Acceder à la liste</button>
             END;
 
         }
