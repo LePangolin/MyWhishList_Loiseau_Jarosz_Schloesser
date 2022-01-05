@@ -24,6 +24,7 @@ class VueListes{
 
         if($no==null){
             foreach($tab_v as $it){
+                //mettre un if si la liste est publique, dans la bdd c'est par défaut en false
                 $url = $this->c->router->pathFor( 'listeUnite', ['no'=> $it->no] ) ;
                 $ph.= "<a class='link-info' href='".$url."'> " . $it->titre . "</a><br>";
             }
@@ -64,4 +65,27 @@ class VueListes{
 
         return($vue->getNav().$res.$vue->getFooter());
     }
+
+    /**
+     * Function afficherPerso correspondant à l'interaction du click sur le button "Mes Listes"
+     * @param null $idUser : id de l'utilisateur
+     * le parametre permet de savoir si l'utilisateur est connecté ou non
+     */
+    /*function afficherPerso($idUser=null){
+        $vue = new VueHTML($this->c);
+
+        if ($idUser==null){
+            $res = <<<END
+                <p>l'utilisateur n'est pas connecté</p>
+            END;
+
+        } else {
+            $res = <<<END
+                <p>l'utilisateur est connecté</p>
+            END;
+
+        }
+
+        return($vue->getNav().$res.$vue->getFooter());
+    }*/
 }

@@ -14,7 +14,9 @@ class VueHTML{
     }
 
     public function getNav():string{
+
         $urlCreaListe = $this->c->router->pathFor("creatListe");
+        $urlAccesListe = $this->c->router->pathFor("AccesList");
         return
             <<<END
             <!doctype html>
@@ -50,7 +52,7 @@ class VueHTML{
                     <div class="navbar-collapse collapse" id="navbarSupportedContent" style="">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                             <li class="nav-item"><a class="nav-link " href="$urlCreaListe">Créer une liste</a></li>
-                            <li class="nav-item"><a class="nav-link " href="#!">Mes listes</a></li>
+                            <li class="nav-item"><a class="nav-link " href="$urlAccesListe">Mes listes</a></li>
                             <li class="nav-item"><a class="nav-link " href="#!">Comment ça marche ?</a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mon Compte</a>

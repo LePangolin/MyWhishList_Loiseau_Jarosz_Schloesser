@@ -25,11 +25,6 @@ use wishlist\Controlleur\ControlleurHome;
 use wishlist\Controlleur\ControlleurListes;
 use wishlist\Controlleur\ControlleurItems;
 
-/**
- * test
- */
-$app->get('/hello/{name}[/]', ControlleurHello::class.':sayHello')
-    ->setName("hello");
 
 /**
  * liste
@@ -40,7 +35,10 @@ $app->get('/liste/{no}/item/{id}[/]', ControlleurItems::class.':afficherUnItem')
 $app->get('/liste/{no}[/]', ControlleurListes::class.':afficherUneListe')
     ->setName("listeUnite");
 
-$app->get('/liste[/]', ControlleurListes::class.':afficherToutesListes')
+$app->get('/utilisateur/', ControlleurListes::class.':afficherListeUtilisateur')
+    ->setName("AccesList");
+
+$app->get('/liste/[/]', ControlleurListes::class.':afficherToutesListes')
     ->setName("listeAll");
 
 /**
@@ -52,8 +50,6 @@ $app->get('/creat[/]', ControlleurListes::class.':creeListe')
 /**
  * item
  */
-
-
 $app->get('/item[/]', ControlleurItems::class.':afficherToutItem')
     ->setName("itemAll");
 
