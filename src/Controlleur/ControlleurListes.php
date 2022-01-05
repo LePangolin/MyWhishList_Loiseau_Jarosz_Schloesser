@@ -21,7 +21,11 @@ class ControlleurListes{
 
     function afficherListeUtilisateur(Request $request, Response $response, array $array){
         $vue = new VueListes($this->c);
-        $idUser = isset($_SESSION['profile']['userid']);
+        if(isset($_SESSION['profile']['userid'])){
+            $idUser = $_SESSION['profile']['userid'];
+        } else {
+            $idUser = null;
+        }
         return $vue->afficherPerso($idUser);
     }
 
