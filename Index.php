@@ -20,7 +20,6 @@ $config = require_once "src/Config/settings.php"; //correspond au contenu de set
 $c = new \Slim\Container($config);
 $app = new \Slim\App($c);
 
-use wishlist\Controlleur\ControlleurHello;
 use wishlist\Controlleur\ControlleurHome;
 use wishlist\Controlleur\ControlleurListes;
 use wishlist\Controlleur\ControlleurItems;
@@ -44,7 +43,7 @@ $app->get('/liste/[/]', ControlleurListes::class.':afficherToutesListes')
 /**
  * Connexion
  */
-$app->get('/connexion[/]',\wishlist\Controlleur\ControlleurConnexion::class.'connexion')
+$app->get('/connexion[/]',\wishlist\Controlleur\ControlleurConnexion::class.':connexion')
     ->setName('Connexion');
 
 

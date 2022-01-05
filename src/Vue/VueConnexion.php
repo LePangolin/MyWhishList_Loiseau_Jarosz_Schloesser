@@ -11,7 +11,7 @@ class VueConnexion{
 
     public function afficherConnexion(){
         $vue = new VueHTML($this->c);
-        $urlListe = $this->c->router->pathforAll("Connexion");
+        $urlListe = $this->c->router->pathfor("Connexion");
         $ph = "<form>
                     <label>Nom Uttilisateur :</label>
                     <input type='submit'>
