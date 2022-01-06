@@ -2,6 +2,7 @@
 namespace wishlist\Vue;
 
 use Slim\Container;
+use wishlist\Authentificateur\Authentication;
 use wishlist\Controlleur\ControlleurItems;
 use wishlist\Controlleur\ControlleurListes as ControlleurListes;
 
@@ -72,16 +73,15 @@ class VueListes{
      * le parametre permet de savoir si l'utilisateur est connecté ou non
      */
     function afficherPerso($idUser=null){
-
         $vue = new VueHTML($this->c);
 
         if ($idUser==null){
             $res = <<<END
             <p></p><br>
             <h1>Vous n'êtes pas connecté</h1>
-            <p>Veuillez entrer le token de la liste privé dont vous voulez accéder</p>
-            <input><br>
-            <button>Acceder à la liste</button>
+            <h5>Veuillez entrer le token de la liste privé dont vous voulez accéder</h5>
+            <br><input><br>
+            <br><button>Acceder à la liste</button>
             END;
 
         } else {
@@ -90,7 +90,7 @@ class VueListes{
             $res = <<<END
             <h1>Bonjour $userName</h1>
             <h2>Vos listes :</h2>
-
+            <p></p>
             <h2>Accès à une liste privée</h2>
             <p>Veuillez entrer le token de la liste privé dont vous voulez accéder</p>
             <input><br>

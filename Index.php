@@ -46,6 +46,8 @@ $app->get('/liste/[/]', ControlleurListes::class.':afficherToutesListes')
 $app->get('/connexion[/]',\wishlist\Controlleur\ControlleurConnexion::class.':connexion')
     ->setName('Connexion');
 
+$app->get('/inscription[/]',\wishlist\Controlleur\ControlleurConnexion::class.':creerUnCompte')
+    ->setName('Creation de compte');
 
 /**
  * Création Liste
@@ -62,6 +64,15 @@ $app->get('/item[/]', ControlleurItems::class.':afficherToutItem')
 /**
  * home
  */
+$app->get('/Fonctionnalites', ControlleurHome::class.':afficherFonctionnalites')
+    ->setName("Fonctionnalites");
+
+$app->get('/CommentCaMarche', ControlleurHome::class.':afficherTuto')
+    ->setName("tuto");
+
+$app->get('/AboutUs', ControlleurHome::class.':afficherNosInfos')
+    ->setName("a Propos de nous");
+
 $app->get('[/]', ControlleurHome::class.':welcome')
     ->setName("home");
 

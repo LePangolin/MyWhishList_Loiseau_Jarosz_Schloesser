@@ -15,4 +15,19 @@ class ControlleurHome{
         $vue = new VueHome($this->c);
         return $vue->afficherAccueil();
     }
+
+    public function afficherTuto(Request $request, Response $response, array $array){
+        $vue = new VueHome($this->c);
+        return $vue->afficherTuto();
+    }
+
+    public function afficherNosInfos(Request $request, Response $response, array $array){
+        $vue = new VueHome($this->c);
+        return $vue->afficherNosInfos();
+    }
+
+    public function afficherFonctionnalites(Request $request, Response $response, array $array){
+        $vue = new VueHome($this->c);
+        return $vue->afficherFonctionnalites();
+    }
 }

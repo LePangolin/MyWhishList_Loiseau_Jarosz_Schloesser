@@ -18,6 +18,8 @@ class VueHTML{
         $urlCreaListe = $this->c->router->pathFor("creatListe");
         $urlAccesListe = $this->c->router->pathFor("AccesList");
         $urlConnexion = $this->c->router->pathFor("Connexion");
+        $urlInscription = $this->c->router->pathFor("Creation de compte");
+        $urlTuto = $this->c->router->pathFor("tuto");
         return
             <<<END
             <!doctype html>
@@ -54,13 +56,13 @@ class VueHTML{
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                             <li class="nav-item"><a class="nav-link " href="$urlCreaListe">Créer une liste</a></li>
                             <li class="nav-item"><a class="nav-link " href="$urlAccesListe">Mes listes</a></li>
-                            <li class="nav-item"><a class="nav-link " href="#!">Comment ça marche ?</a></li>
+                            <li class="nav-item"><a class="nav-link " href="$urlTuto">Comment ça marche ?</a></li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mon Compte</a>
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mon compte</a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="$urlConnexion">Connexion</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#!">Créer un comte</a></li>
+                                    <li><a class="dropdown-item" href="$urlInscription">Créer un comte</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -72,6 +74,8 @@ class VueHTML{
     }
 
     public function getFooter(): string{
+        $urlInfo = $this->c->router->pathFor("a Propos de nous");
+        $urlFonctionnalites = $this->c->router->pathFor("Fonctionnalites");
         return
         <<<END
             </main>
@@ -80,8 +84,8 @@ class VueHTML{
             
             <!-- Footer : aubout us + Fonctionnalités réalisées -->
             <footer class="py-1 bg-dark text-center">
-                <button type="button" class="btn btn-outline-secondary">A propos de nous</button>
-                <button type="button" class="btn btn-outline-secondary">Fonctionnalitées réalisées</button>
+                <a class="btn btn-outline-secondary" href="$urlInfo" role="button">A propos de nous</a>
+                <a role="button" class="btn btn-outline-secondary" href="$urlFonctionnalites">Fonctionnalités réalisées</a>
                 <div class="container"><p class="m-0 text-center text-white">Copyright &copy; JLS</p></div>
             </footer>
             </body>
