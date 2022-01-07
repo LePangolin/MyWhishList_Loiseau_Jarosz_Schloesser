@@ -49,13 +49,14 @@ class VueConnexion{
                     <br><p></p>
                     <label>Mot de Passe :</label><input type='password' name='pswd'>
                     <p></p>
-                    <input type='submit' name='submit'>Créer un compte</input>
+                    <input type='submit' name='submit'>
                     </form>";
         if(isset($_GET['submit'])){
             $name = $_GET['name'];
             $pswd = $_GET['pswd'];
             Authentication::init();
             Authentication::createUser($name,$pswd);
+            Authentication::authenticate($name,$pswd);
         }
         return(
             $vue->getNav()."
