@@ -44,15 +44,19 @@ class VueConnexion{
         $urlcreation = $this->c->router->pathfor("Connexion");
         $ph = "
         <br><h1>Créer un compte</h1><br>   
-                    <form>
-                    <label>Nom Utilisateur :</label>
-                    <input>
+                    <form method='get'>
+                    <label>Nom Utilisateur :</label> <input type='text' name='name'>
                     <br><p></p>
-                    <label>Mot de Passe :</label>
-                    <input type='password'>
+                    <label>Mot de Passe :</label><input type='password' name='pswd'>
                     <p></p>
-                    <button>Créer un compte</button>
+                    <input type='submit' name='submit'>Créer un compte</input>
                     </form>";
+        if(isset($_GET['submit'])){
+            $name = $_GET['name'];
+            $pswd = $_GET['pswd'];
+            Authentication::init();
+            Authentication::createUser($name,$pswd);
+        }
         return(
             $vue->getNav()."
                         <body>

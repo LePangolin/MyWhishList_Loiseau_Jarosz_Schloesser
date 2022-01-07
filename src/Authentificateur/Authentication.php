@@ -27,7 +27,11 @@ class Authentication{
             try {
                 $query = "INSERT INTO users (username , passwd) VALUES (:username,:passwd)";
                 self::$connexion->prepare($query)->execute([':username' => $username, ':passwd' => $pass]);
-            }catch (\Exception $e){}
+            }catch (\Exception $e){
+                echo "Exception";
+            }
+        }else{
+            echo "Mot de passe trop court";
         }
     }
 
