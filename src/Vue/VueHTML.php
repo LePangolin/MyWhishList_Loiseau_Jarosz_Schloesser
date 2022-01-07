@@ -20,6 +20,7 @@ class VueHTML{
         $urlConnexion = $this->c->router->pathFor("Connexion");
         $urlInscription = $this->c->router->pathFor("Creation de compte");
         $urlTuto = $this->c->router->pathFor("tuto");
+        $urlDeconnexion = $this->c->router->pathFor('Deconnexion');
         return
             <<<END
             <!doctype html>
@@ -63,6 +64,8 @@ class VueHTML{
                                     <li><a class="dropdown-item" href="$urlConnexion">Connexion</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="$urlInscription">Créer un comte</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="$urlDeconnexion">Se deconnecter</a></li>
                                 </ul>
                             </li>
                         </ul>
