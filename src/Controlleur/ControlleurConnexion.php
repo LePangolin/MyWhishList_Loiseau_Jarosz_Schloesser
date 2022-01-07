@@ -21,4 +21,9 @@ class ControlleurConnexion{
         $vue = new VueConnexion($this->c);
         return $vue->creerUnCompte();
     }
+
+    public function deconnexion(Request $request, Response $response, array $array){
+        $vue = new VueConnexion($this->c);
+        return $vue->deconnexion();
+    }
 }

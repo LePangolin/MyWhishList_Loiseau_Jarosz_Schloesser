@@ -52,6 +52,9 @@ $app->get('/connexion[/]',\wishlist\Controlleur\ControlleurConnexion::class.':co
 $app->get('/inscription[/]',\wishlist\Controlleur\ControlleurConnexion::class.':creerUnCompte')
     ->setName('Creation de compte');
 
+$app->get('/deconnexion[/]',\wishlist\Controlleur\ControlleurConnexion::class.':deconnexion')
+    ->setName('Deconnexion');
+
 /**
  * Création Liste
  */

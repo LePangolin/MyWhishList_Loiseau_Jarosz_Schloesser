@@ -65,4 +65,9 @@ class Authentication{
         }
     }
 
+    public static function deconnexion(){
+        if (isset($_SESSION['profile'])){
+            unset($_SESSION['profile']);
+        }
+    }
 }
