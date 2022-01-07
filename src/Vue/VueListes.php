@@ -2,7 +2,6 @@
 namespace wishlist\Vue;
 
 use Slim\Container;
-use wishlist\Authentificateur\Authentication;
 use wishlist\Controlleur\ControlleurItems;
 use wishlist\Controlleur\ControlleurListes as ControlleurListes;
 
@@ -12,7 +11,7 @@ class VueListes{
         $this->c = $c;
     }
 
-    function afficher($no=null){
+    function afficher($token=null){
         $tab_v = ControlleurListes::toutListes();
         $tab_i = ControlleurItems::toutItems();
         $ph = "";
@@ -23,11 +22,12 @@ class VueListes{
 
         $vue = new VueHTML($this->c);
 
-        if($no==null){
+        if($token==null){
             foreach($tab_v as $it){
-                //mettre un if si la liste est publique, dans la bdd c'est par défaut en false
-                $url = $this->c->router->pathFor( 'listeUnite', ['no'=> $it->no] ) ;
-                $ph.= "<a class='link-info' href='".$url."'> " . $it->titre . "</a><br>";
+                if($it->publique != '0'){
+                    $url = $this->c->router->pathFor( 'listeUnite', ['no'=> $it->no] ) ;
+                    $ph.= "<a class='link-info' href='".$url."'> " . $it->titre . "</a><br>";
+                }
             }
             $res = <<<END
                         <body>
@@ -40,6 +40,14 @@ class VueListes{
                      END;
         } else {
 
+            foreach($tab_v as $li){
+
+                if($li->token == $token){
+                    $infoListe="<h1>$li->titre</h1><h2>$li->description</h2>";
+                    $no = $li->no;
+                }
+            }
+
             foreach ($tab_i as $item){
 
                 $url = $this->c->router->pathFor( 'itemUnite' , ['no'=> $no, 'id' => $item->id]);
@@ -50,12 +58,7 @@ class VueListes{
                 }
             }
 
-            foreach($tab_v as $li){
 
-                if($li->no == $no){
-                    $infoListe="<h1>$li->titre</h1><h2>$li->description</h2>";
-                }
-            }
             $res = <<<END
                 <container>
                     <p>$infoListe $ph</p>
@@ -74,14 +77,15 @@ class VueListes{
      */
     function afficherPerso($idUser=null){
         $vue = new VueHTML($this->c);
-
+        $url = $this->c->router->pathFor("AccesList");
         if ($idUser==null){
             $res = <<<END
             <p></p><br>
             <h1>Vous n'êtes pas connecté</h1>
             <h5>Veuillez entrer le token de la liste privé dont vous voulez accéder</h5>
-            <br><input><br>
-            <br><button>Acceder à la liste</button>
+            <form method="post" action="$url">
+            <br><input type="text" name="input"><br>
+            <br><button class='btn btn-outline-dark text-light' id="button" role='button' >Acceder à la liste</button></form>
             END;
 
         } else {
@@ -93,12 +97,11 @@ class VueListes{
             <p></p>
             <h2>Accès à une liste privée</h2>
             <p>Veuillez entrer le token de la liste privé dont vous voulez accéder</p>
-            <input><br>
-            <button>Acceder à la liste</button>
+            <form method="post" action="$url">
+            <br><input type="text" name="input"><br>
+            <br><button class='btn btn-outline-dark text-light' id="button" role='button' type="submit">Acceder à la liste</button></form>
             END;
-
         }
-
         return($vue->getNav().$res.$vue->getFooter());
     }
 }

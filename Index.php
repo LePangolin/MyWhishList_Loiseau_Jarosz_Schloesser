@@ -39,6 +39,8 @@ $app->get('/liste/{no}[/]', ControlleurListes::class.':afficherUneListe')
 $app->get('/utilisateur/', ControlleurListes::class.':afficherListeUtilisateur')
     ->setName("AccesList");
 
+$app->post('/utilisateur/', ControlleurListes::class.':afficherListeToken');
+
 $app->get('/liste/[/]', ControlleurListes::class.':afficherToutesListes')
     ->setName("listeAll");
 

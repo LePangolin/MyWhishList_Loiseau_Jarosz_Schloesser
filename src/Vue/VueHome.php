@@ -12,7 +12,7 @@ class VueHome{
         $urlListe = $this->container->router->pathFor("listeAll");
         return ($vue->getNav().
             <<<END
-                <header class="bg-secondary py-1 bg-opacity-40">
+                <header class="bg py-1 bg-opacity-40">
                     <div class="container px-2 px-lg-5 my-5">
                         <div class="text-center text-dark">
                             <h1 class="display-4 fw-bolder">MyWishList</h1>
