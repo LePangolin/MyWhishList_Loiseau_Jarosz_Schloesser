@@ -27,9 +27,7 @@ class Authentication{
             try {
                 $query = "INSERT INTO users (username , passwd) VALUES (:username,:passwd)";
                 self::$connexion->prepare($query)->execute([':username' => $username, ':passwd' => $pass]);
-            }catch (\Exception $e){
-                echo "Erreur lors de l'inscription : Le nom d'uttilisateur est déjà pris";
-            }
+            }catch (\Exception $e){}
         }
     }
 
@@ -40,16 +38,13 @@ class Authentication{
         $st->execute([$user,$pass]);
         $row = $st->fetch(PDO::FETCH_ASSOC);
         if($row != null) {
-            echo "Connexion réussis !";
             self::$utilisateur = new Uttilisateur($row['username'], $row['uid']);
             self::loadProfile($row['uid']);
-        }else{
-            echo "Erreur de connexion : uttilisateur ou mot de passe incorrecte";
         }
     }
 
     private static function loadProfile($userid){
-        $array = array('username :' => self::$utilisateur->nom, 'userid' => $userid, 'userip'=>$_SERVER['REMOTE_ADDR'],'roleid'=>1,'auth-level'=>1);
+        $array = array('username' => self::$utilisateur->nom, 'userid' => $userid, 'userip'=>$_SERVER['REMOTE_ADDR'],'roleid'=>1,'auth-level'=>1);
         unset($_SESSION['profile']);
         $_SESSION['profile'] = $array;
     }

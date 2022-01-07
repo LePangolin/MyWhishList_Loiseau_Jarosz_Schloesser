@@ -1,6 +1,7 @@
 <?php
 namespace wishlist\Vue;
 use Slim\Container;
+use wishlist\Authentificateur\Authentication;
 
 class VueConnexion{
     private $c;
@@ -14,15 +15,20 @@ class VueConnexion{
         $urlcreation = $this->c->router->pathfor("Creation de compte");
         $ph = "
                     <br><h1>Connexion</h1><br>   
-                    <form>
-                    <label>Nom Utilisateur :</label>
-                    <input>
+                    <form action='' method='get'>
+                    <label>Nom Utilisateur :</label><input type='text' name='nom'>
                     <br><p></p>
-                    <label>Mot de Passe :</label>
-                    <input type='password'>
+                    <label>Mot de Passe :</label><input type='password' name = 'mdp'>
                     <p></p>
-                    <button>Se connecter</button>
+                    <input type='submit' name='submit'>
                     </form>";
+
+        if(isset($_GET['submit'])){
+            $nom = $_GET['nom'];
+            $mdp = $_GET['mdp'];
+            Authentication::init();
+            Authentication::authenticate($nom,$mdp);
+        }
         return(
             $vue->getNav()."
                         <body>

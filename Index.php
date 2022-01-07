@@ -1,6 +1,7 @@
 <?php
 require_once 'vendor/autoload.php';
 
+session_start();
 /**
  * Eloquent
  */
@@ -13,6 +14,7 @@ $db->bootEloquent();
  * FIN Eloquent
  */
 
+
 /**
  * Slim 3
  */
@@ -20,10 +22,10 @@ $config = require_once "src/Config/settings.php"; //correspond au contenu de set
 $c = new \Slim\Container($config);
 $app = new \Slim\App($c);
 
+use wishlist\Authentificateur\Authentication;
 use wishlist\Controlleur\ControlleurHome;
 use wishlist\Controlleur\ControlleurListes;
 use wishlist\Controlleur\ControlleurItems;
-
 
 /**
  * liste
@@ -61,6 +63,7 @@ $app->get('/creat[/]', ControlleurListes::class.':creeListe')
 $app->get('/item[/]', ControlleurItems::class.':afficherToutItem')
     ->setName("itemAll");
 
+
 /**
  * home
  */
@@ -76,11 +79,8 @@ $app->get('/AboutUs', ControlleurHome::class.':afficherNosInfos')
 $app->get('[/]', ControlleurHome::class.':welcome')
     ->setName("home");
 
+
 $app->run();
-
-
-
-
 /**
  * FIN Slim 3
  */
