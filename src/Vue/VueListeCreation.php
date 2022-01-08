@@ -40,28 +40,28 @@ class VueListeCreation
                 </html>
             ';
 
-        if (isset($_GET['submit'])) {
+        if (isset($_GET['valider'])) {
             Authentication::init();
 
-            $pdo = Authentication::get("connexion");
+            $pdo = Authentication::$connexion;
             $sqlQuery = 'SELECT MAX(no) FROM liste ';
             $insertRecipe = $pdo->prepare($sqlQuery);
 
             $noliste = $insertRecipe->execute();
             $noliste ++;
-
-            $sqlQuery = 'INSERT INTO personne(no, user_id, titre, description, expiration, token)  
+            echo $noliste;
+            $sqlQuery = 'INSERT INTO liste(no, user_id, titre, description, expiration, token)  
             VALUES (:no, :user_id, :titre, :description, :expiration, :token)';
 
-            $insertRecipe = $pdo->prepare($sqlQuery);
-            $insertRecipe->execute([
-                'no' => $noliste,
-                'user_id' => 0,
-                'titre' => htmlspecialchars($_GET['titre']),
-                'description' => htmlspecialchars($_GET['descr']),
-                'expiration' => htmlspecialchars($_GET['date']),
-                'token' => "test1"
-            ]);
+                $insertRecipe = $pdo->prepare($sqlQuery);
+                $insertRecipe->execute([
+                    'no' => 64,
+                    'user_id' => 0,
+                    'titre' => htmlspecialchars($_GET['titre']),
+                    'description' => htmlspecialchars($_GET['descr']),
+                    'expiration' => htmlspecialchars($_GET['date']),
+                    'token' => "test1"
+                ]);
 
         }
 

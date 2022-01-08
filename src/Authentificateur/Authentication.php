@@ -8,7 +8,7 @@ use PDO;
 
 class Authentication{
 
-    private static PDO $connexion;
+    public static PDO $connexion;
     private static Uttilisateur $utilisateur;
 
     static function init(){
