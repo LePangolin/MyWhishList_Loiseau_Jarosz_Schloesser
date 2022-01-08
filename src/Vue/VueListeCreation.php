@@ -55,6 +55,7 @@ class VueListeCreation
             $noliste ++;
             $sqlQuery = 'INSERT INTO liste(no, user_id, titre, description, expiration, token)  
             VALUES (:no, :user_id, :titre, :description, :expiration, :token)';
+            $token =  bin2hex(random_bytes(8));
 
                 $insertRecipe = $pdo->prepare($sqlQuery);
                 $insertRecipe->execute([
@@ -63,7 +64,7 @@ class VueListeCreation
                     'titre' => htmlspecialchars($_GET['titre']),
                     'description' => htmlspecialchars($_GET['descr']),
                     'expiration' => htmlspecialchars($_GET['date']),
-                    'token' => "test1"
+                    'token' => $token
                 ]);
 
         }
