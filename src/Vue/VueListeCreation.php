@@ -2,6 +2,7 @@
 
 namespace wishlist\Vue;
 
+use PDO;
 use Slim\Container;
 use wishlist\Authentificateur\Authentication;
 
@@ -14,6 +15,7 @@ class VueListeCreation
 
     function afficher(){
         $vue = new VueHTML($this->container);
+        if(isset($_SESSION['profile'])){
         $php = '
             <!DOCTYPE html>
                     <html>
@@ -44,25 +46,29 @@ class VueListeCreation
             Authentication::init();
 
             $pdo = Authentication::$connexion;
-            $sqlQuery = 'SELECT MAX(no) FROM liste ';
+            $sqlQuery = 'SELECT MAX(no) as \'no\' FROM liste ';
             $insertRecipe = $pdo->prepare($sqlQuery);
 
-            $noliste = $insertRecipe->execute();
+            $insertRecipe->execute();
+            $row = $insertRecipe->fetch(PDO::FETCH_ASSOC);
+            $noliste = $row['no'];
             $noliste ++;
-            echo $noliste;
             $sqlQuery = 'INSERT INTO liste(no, user_id, titre, description, expiration, token)  
             VALUES (:no, :user_id, :titre, :description, :expiration, :token)';
 
                 $insertRecipe = $pdo->prepare($sqlQuery);
                 $insertRecipe->execute([
-                    'no' => 64,
-                    'user_id' => 0,
+                    'no' => $noliste,
+                    'user_id' => $_SESSION['profile']['userid'],
                     'titre' => htmlspecialchars($_GET['titre']),
                     'description' => htmlspecialchars($_GET['descr']),
                     'expiration' => htmlspecialchars($_GET['date']),
                     'token' => "test1"
                 ]);
 
+        }
+        }else{
+            $php = "<p>Vous devez être connecter pour crée une liste</p>";
         }
 
         return ($vue->getNav(). $php . $vue->getFooter());

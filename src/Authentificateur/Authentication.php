@@ -52,10 +52,8 @@ class Authentication{
         unset($_SESSION['profile']);
         $_SESSION['profile'] = $array;
         date_default_timezone_set("UTC");
-        echo $_SESSION['profile']['registered'];
         if((time() - $_SESSION['profile']['registered'])>60*30){
             unset($_SESSION['start']);
-            echo "Session destroyed";
         }
     }
 
