@@ -70,4 +70,10 @@ class Authentication{
             unset($_SESSION['profile']);
         }
     }
+
+    public function __get($property) {
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
+    }
 }
