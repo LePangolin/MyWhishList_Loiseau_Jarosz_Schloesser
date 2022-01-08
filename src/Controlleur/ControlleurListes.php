@@ -45,7 +45,6 @@ class ControlleurListes{
     }
 
     function afficherListeToken(Request $request, Response $response, array $array){
-        $vue = new VueListeCreation($this->c);
         $token = $request->getParam('input');
         return $response->withRedirect($this->c->router->pathFor('listeUnite',['no' => $token]));
     }

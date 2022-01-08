@@ -25,7 +25,7 @@ class VueListes{
         if($token==null){
             foreach($tab_v as $it){
                 if($it->publique != '0'){
-                    $url = $this->c->router->pathFor( 'listeUnite', ['no'=> $it->no] ) ;
+                    $url = $this->c->router->pathFor( 'listeUnite', ['no'=> $it->token] ) ;
                     $ph.= "<a class='link-info' href='".$url."'> " . $it->titre . "</a><br>";
                 }
             }
@@ -90,11 +90,19 @@ class VueListes{
 
         } else {
             $userName=$_SESSION['profile']['username'];
-
+            $tab_v = ControlleurListes::toutListes();
+            foreach($tab_v as $it){
+                if($it->user_id == $idUser){
+                    $url2 = $this->c->router->pathFor( 'listeUnite', ['no'=> $it->token]);
+                    $ph = "<a class='link-info' href='".$url2."'> " . $it->titre . "</a><br>";
+                }
+            }
             $res = <<<END
             <h1>Bonjour $userName</h1>
             <h2>Vos listes :</h2>
-            <p></p>
+            <p>
+            $ph
+            </p>
             <h2>Accès à une liste privée</h2>
             <p>Veuillez entrer le token de la liste privé dont vous voulez accéder</p>
             <form method="post" action="$url">
