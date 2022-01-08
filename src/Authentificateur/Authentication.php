@@ -8,7 +8,7 @@ use PDO;
 
 class Authentication{
 
-    private static PDO $connexion;
+    public static PDO $connexion;
     private static Uttilisateur $utilisateur;
 
     static function init(){
@@ -52,10 +52,8 @@ class Authentication{
         unset($_SESSION['profile']);
         $_SESSION['profile'] = $array;
         date_default_timezone_set("UTC");
-        echo $_SESSION['profile']['registered'];
         if((time() - $_SESSION['profile']['registered'])>60*30){
             unset($_SESSION['start']);
-            echo "Session destroyed";
         }
     }
 
@@ -68,6 +66,12 @@ class Authentication{
     public static function deconnexion(){
         if (isset($_SESSION['profile'])){
             unset($_SESSION['profile']);
+        }
+    }
+
+    public function __get($property) {
+        if (property_exists($this, $property)) {
+            return $this->$property;
         }
     }
 }
