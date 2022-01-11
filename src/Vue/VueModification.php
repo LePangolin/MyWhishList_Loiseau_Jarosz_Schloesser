@@ -42,7 +42,7 @@ class VueModification{
                 else if($nouveau1 != $nouveau2){
                     echo "<script>alert(\"Les deux nouveau mots de passe ne correspondent pas\")</script>";
                 }
-                else if(strlen($nouveau1) < 10){
+                else if(strlen($_GET['nouveau1']) < 10){
                     echo "<script>alert(\"Le mot de passe est trop court\")</script>";
                 }
                 else{
