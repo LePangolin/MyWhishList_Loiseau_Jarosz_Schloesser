@@ -58,6 +58,13 @@ $app->get('/deconnexion[/]',\wishlist\Controlleur\ControlleurConnexion::class.':
     ->setName('Deconnexion');
 
 /**
+ * Modification
+ */
+
+$app->get('/modification[/]',\wishlist\Controlleur\ControlleurModification::class.':modifierMotDePasse')
+    ->setName('Modification du mot de passe');
+
+/**
  * Création Liste
  */
 $app->get('/creat[/]', ControlleurListes::class.':creeListe')
