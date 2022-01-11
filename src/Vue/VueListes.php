@@ -3,7 +3,7 @@ namespace wishlist\Vue;
 
 use Slim\Container;
 use wishlist\Controlleur\ControlleurItems;
-use wishlist\Controlleur\ControlleurListes as ControlleurListes;
+use wishlist\Controlleur\ControlleurListes;
 
 class VueListes{
     private Container $c;
@@ -40,6 +40,8 @@ class VueListes{
                      END;
         } else {
 
+
+
             foreach($tab_v as $li){
 
                 if($li->token == $token){
@@ -48,13 +50,19 @@ class VueListes{
                 }
             }
 
+            $tab_r=ControlleurItems::toutReservation();
             foreach ($tab_i as $item){
-
-                $url = $this->c->router->pathFor( 'itemUnite' , ['no'=> $no, 'id' => $item->id]);
-                if($item->liste_id == $no){
-                    $ph .= "<h3>"  . $item->nom . "</h3>".
-                        "<img style='width: 200px;' src=/MyWishList_Jarosz_Loiseau_Schloesser/img/".$item->img.">".
-                        "<p>état de réservation : $item->tarif <br> <a href=$url class='link-info'> en savoir plus </a></p>"; //changer tarif
+                foreach ($tab_r as $reservation){
+                $url = $this->c->router->pathFor( 'itemUnite' , ['no'=> $token, 'id' => $item->id]);
+                    if($item->liste_id == $no){
+                        $ph .= "<h3>"  . $item->nom . "</h3>".
+                            "<img style='width: 200px;' src=/MyWishList_Jarosz_Loiseau_Schloesser/img/".$item->img.">";
+                        if($item->id == $reservation->iditem && $item->liste_id == $no){
+                            $ph.= "<p>état de réservation : réservé<br>"."<a href=$url class='link-info'> en savoir plus </a></p>";
+                        } else {
+                            $ph.= "<p>état de réservation : non réservé<br>"."<a href=$url class='link-info'> en savoir plus </a></p>";
+                        }
+                    }
                 }
             }
 
