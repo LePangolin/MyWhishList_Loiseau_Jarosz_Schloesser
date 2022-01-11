@@ -21,25 +21,58 @@ class VueModification{
             $php = '
                     <br>
                     <br>
-                    <p>Modifier votre mot de passe</p>
-                    <br>
-                    <form method="get">
-                        <label>Ancien mot de passe : </label><input type="password" name="ancien">
-                        <label>Nouveau Mot de Passe : </label><input type="password" name="nouveau1">
-                        <label>Confirmer nouveau : </label><input type="password" name="nouveau2">
-                        <input type="submit" name="submit">
-                    </form>
-                    <br>
-                    <br>
-                    <br>
-                    <p>Supprimer votre compte</p>
+                    <div class="row align-items-start">
+                    <div class="col">
+                        <h1>Modifier votre mot de passe</h1>
+                        <br>
+                        <form method="get">
+                        <div class="mb-3">
+                            <label class="form-label">Ancien mot de passe : </label>
+                        </div>
+                            <input type="password" name="ancien">
+                            <br>
+                            <br>
+                        <div class="mb-3">
+                            <label class="form-label">Nouveau Mot de Passe : </label>
+                        </div>
+                            <input type="password" name="nouveau1">
+                            <br>
+                            <br>
+                        <div class="mb-3">
+                            <label>Confirmer nouveau : </label>
+                        </div>
+                            <input type="password" name="nouveau2">
+                            <br>
+                            <br>
+                            <input type="submit" name="submit" class="btn btn-primary">
+                        </form>
+                    </div>
+                    <div class="col">
+                    <h1>Supprimer votre compte</h1>
                     <br>
                     <form action= "" method="get">
-                        <label>Nom : </label><input type="text" name="name">
-                        <label>Mot de Passe : </label><input type="password" name="mdp">
-                        <label>Confirmer: </label><input type="password" name="mdpConf">
-                        <input type="submit" name="suppr">
+                    <div class="mb-3">
+                        <label class="form-label">Nom : </label>
+                    </div>
+                        <input type="text" name="name">
+                        <br>
+                        <br>
+                    <div class="mb-3">
+                        <label>Mot de Passe : </label>
+                    </div>
+                        <input type="password" name="mdp">
+                        <br>
+                        <br>
+                    <div class="mb-3"
+                        <label>Confirmer: </label>
+                    </div>
+                        <input type="password" name="mdpConf">
+                        <br>
+                        <br>
+                        <input type="submit" name="suppr" class="btn btn-primary">
                     </form>
+                    </div>
+                    </div>
             ';
 
             if(isset($_GET['submit'])){

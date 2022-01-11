@@ -64,7 +64,7 @@ class VueHTML{
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="$urlConnexion">Connexion</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="$urlInscription">Créer un comte</a></li>
+                                    <li><a class="dropdown-item" href="$urlInscription">Créer un compte</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="$urlDeconnexion">Se deconnecter</a></li>
                                     <li><hr class="dropdown-divider"></li>
