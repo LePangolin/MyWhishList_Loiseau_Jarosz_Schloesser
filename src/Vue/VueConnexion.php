@@ -16,14 +16,22 @@ class VueConnexion{
         $urlcreation = $this->c->router->pathfor("Creation de compte");
         if(!isset($_SESSION['profile'])) {
             $ph = "
-                    <br><h1>Connexion</h1><br>   
-                    <form action='' method='get'>
-                    <label>Nom Utilisateur :</label><input type='text' name='nom'>
-                    <br><p></p>
-                    <label>Mot de Passe :</label><input type='password' name = 'mdp'>
-                    <p></p>
-                    <input type='submit' name='submit'>
-                    </form>
+                    <br><h1>Connexion</h1><br>
+                    <div class='container'>
+                        <form action='' method='get'>
+                        <div class='mb-3'>
+                            <label class='form-label'>Nom Utilisateur : </label>
+                        </div>
+                        <input type='text' name='nom'><br><br>
+                        <div class='mb-3'>    
+                            <label class=''>Mot de Passe : </label>
+                        </div>
+                        <input type='password' name = 'mdp'>
+                        <br>
+                        <br>
+                        <input type='submit' name='submit' class='btn btn-primary'>
+                        </form>
+                    </div>
                     <p></p><a class='btn btn-info text-light' href=$urlcreation role=button>Vous n'avez pas de compte ?</a>";
 
             if (isset($_GET['submit'])) {
@@ -55,13 +63,23 @@ class VueConnexion{
             if(!isset($_SESSION['profile'])){
                 $ph = "
                 <br><h1>Créer un compte</h1><br>   
-                <form method='get'>
-                <label>Nom Utilisateur :</label> <input type='text' name='name'>
-                <br><p></p>
-                <label>Mot de Passe :</label><input type='password' name='pswd'>
-                <p></p>
-                <input type='submit' name='submit'>
-                </form>
+                <div class='container'>
+                    <form method='get'>
+                    <div class='mb-3'>
+                        <label class='form-label'>Nom Utilisateur :</label> 
+                    </div>    
+                        <input type='text' name='name'>
+                     <div class='mb-3'>
+                     <br>
+                        <label>Mot de Passe :</label>
+                     </div>
+                        <input type='password' name='pswd'>
+                        <br>
+                        <br>
+                        <input type='submit' name='submit' class='btn btn-primary'>
+                     </form>
+                </div>
+                
                 <p></p><a class='btn btn-info text-light' href=$urlcreation role=button>Vous avez déjà un compte ?</a>";
                 if (isset($_GET['submit'])) {
                     $name = $_GET['name'];
