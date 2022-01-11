@@ -29,15 +29,24 @@ class VueItems{
                 $ph .= "<a href='".$url."'> </br>" . $it->id . " : " . $it->nom . "</a>";
             }
         } else {
-            $url = $this->c->router->pathFor('itemAll');
+            $tab_r=ControlleurItems::toutReservation();
+            $estReserve=false;
             foreach($tab_v as $it){
                 if($it->id == $id){
                     $ph = "<h2>$it->nom</h2>".
-                        "<img style='width: 100px;' src=/MyWishList_Jarosz_Loiseau_Schloesser/img/".$it->img.">".
-                        "<p>$it->descr</p>"." "."<p>$it->tarif</p>";
-
+                        "<img style='width: 200px;' src=/MyWishList_Jarosz_Loiseau_Schloesser/img/".$it->img.">".
+                        "<p>$it->descr, prix : $it->tarif</p>";
+                    foreach ($tab_r as $reservation){
+                        if ($reservation->iditem == $it->id){
+                            $estReserve=true;
+                        }
+                    }
+                    if(!$estReserve){
+                        $ph.="<h1>Faire le formulaire</h1>";
+                    } else {
+                        $ph.="<p>L'item est déjà réservé</p>";
+                    }
                 }
-
             }
 
         }

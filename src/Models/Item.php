@@ -10,4 +10,8 @@ class Item extends \Illuminate\Database\Eloquent\Model{
     function liste(){
         return $this->belongsTo('models\liste' , 'id');
     }
+
+    function reservation(){
+        return $this->hasMany('models\reservation', 'iditem');
+    }
 }
