@@ -15,6 +15,7 @@ class ControlleurModification{
 
     public function modifierMotDePasse(Request $request, Response $response, array $array){
         $vue = new VueModification($this->c);
-        return $vue->modification();
+        return $vue->modification($response);
+
     }
 }

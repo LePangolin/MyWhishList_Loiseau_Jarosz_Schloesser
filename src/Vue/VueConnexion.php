@@ -1,6 +1,7 @@
 <?php
 namespace wishlist\Vue;
 use Slim\Container;
+use Slim\Http\Response;
 use wishlist\Authentificateur\Authentication;
 
 class VueConnexion{
@@ -10,7 +11,7 @@ class VueConnexion{
         $this->c = $c;
     }
 
-    public function afficherConnexion(){
+    public function afficherConnexion(Response $response){
         $vue = new VueHTML($this->c);
         $urlcreation = $this->c->router->pathfor("Creation de compte");
         if(!isset($_SESSION['profile'])) {
@@ -30,6 +31,9 @@ class VueConnexion{
                 $mdp = $_GET['mdp'];
                 Authentication::init();
                 Authentication::authenticate($nom, $mdp);
+                return(
+                    $response->withRedirect($this->c->router->pathfor('home'))
+                );
             }
         }else{
             $nom = $_SESSION['profile']['username'];
@@ -45,7 +49,7 @@ class VueConnexion{
         );
     }
 
-    public function creerUnCompte(){
+    public function creerUnCompte(Response $response){
             $vue = new VueHTML($this->c);
             $urlcreation = $this->c->router->pathfor("Connexion");
             if(!isset($_SESSION['profile'])){
@@ -65,6 +69,9 @@ class VueConnexion{
                     Authentication::init();
                     Authentication::createUser($name, $pswd);
                     Authentication::authenticate($name, $pswd);
+                    return(
+                    $response->withRedirect($this->c->router->pathfor('home'))
+                    );
                 }
         }else{
             $nom = $_SESSION['profile']['username'];

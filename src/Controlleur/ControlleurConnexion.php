@@ -14,12 +14,12 @@ class ControlleurConnexion{
 
     public function connexion(Request $request, Response $response, array $array){
         $vue = new VueConnexion($this->c);
-        return $vue->afficherConnexion();
+        return $vue->afficherConnexion($response);
     }
 
     public function creerUnCompte(Request $request, Response $response, array $array){
         $vue = new VueConnexion($this->c);
-        return $vue->creerUnCompte();
+        return $vue->creerUnCompte($response);
     }
 
     public function deconnexion(Request $request, Response $response, array $array){
