@@ -18,7 +18,7 @@ class VueHome{
                             <h1 class="display-4 fw-bolder">MyWishList</h1>
                             <p></p>
                             <p class="lead fw-normal text-dark mb-0">La meilleure application web pour la gestion de listes de cadeaux</p>
-                            <p></p><a class="btn btn-outline-dark text-light" href="$urlListe" role="button">Voirs les listes publiques</a>
+                            <p></p><a class="btn btn-info text-light" href="$urlListe" role="button">Voirs les listes publiques</a>
                     </div>
                 </div>
             </header>
@@ -38,7 +38,7 @@ class VueHome{
                 Vous pouvez créer une liste à partir du button "Créer une Liste".<br>
                 Il est aussi possible de consulter des listes publiques avec le button si-dessous<br>
                 Tout le monde peut participer à une liste tant que vous avez le token de la dite liste accessible dans l'onglet "Mes Listes"</p>
-                <a class="btn btn-outline-dark text-light" href="$urlListe" role="button">Voirs les listes publiques</a>
+                <a class="btn btn-info text-light" href="$urlListe" role="button">Voirs les listes publiques</a>
                 </div>
             END
             .$vue->getFooter());

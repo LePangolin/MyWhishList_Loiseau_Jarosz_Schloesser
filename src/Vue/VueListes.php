@@ -55,12 +55,12 @@ class VueListes{
                 foreach ($tab_r as $reservation){
                 $url = $this->c->router->pathFor( 'itemUnite' , ['no'=> $token, 'id' => $item->id]);
                     if($item->liste_id == $no){
-                        $ph .= "<h3>"  . $item->nom . "</h3>".
+                        $ph .= "<div class='border-bottom border-dark w-50 mx-auto'><h3>"  . $item->nom . "</h3>".
                             "<img style='width: 200px;' src=/MyWishList_Jarosz_Loiseau_Schloesser/img/".$item->img.">";
                         if($item->id == $reservation->iditem && $item->liste_id == $no){
-                            $ph.= "<p>état de réservation : réservé<br>"."<a href=$url class='link-info'> en savoir plus </a></p>";
+                            $ph.= "<p>état de réservation : réservé<br>"."<a href=$url class='link-info'> en savoir plus </a></p></div>";
                         } else {
-                            $ph.= "<p>état de réservation : non réservé<br>"."<a href=$url class='link-info'> en savoir plus </a></p>";
+                            $ph.= "<p>état de réservation : non réservé<br>"."<a href=$url class='link-info'> en savoir plus </a></p></div>";
                         }
                     }
                 }
@@ -70,7 +70,7 @@ class VueListes{
             $res = <<<END
                 <container>
                     <p>$infoListe $ph</p>
-                    <p><a class='btn btn-outline-dark text-light' href="$tabUrl[1]" role='button'>Voir un autre exemple de liste</a></p>
+                    <p><a class='btn btn-info text-light' href="$tabUrl[1]" role='button'>Voir un autre exemple de liste</a></p>
                 </container>
                 END;
         }
@@ -93,7 +93,7 @@ class VueListes{
             <h5>Veuillez entrer le token de la liste privé dont vous voulez accéder</h5>
             <form method="post" action="$url">
             <br><input type="text" name="input"><br>
-            <br><button class='btn btn-outline-dark text-light' id="button" role='button' >Acceder à la liste</button></form>
+            <br><button class='btn btn-info text-light' id="button" role='button' >Acceder à la liste</button></form>
             END;
 
         } else {
@@ -116,7 +116,7 @@ class VueListes{
             <p>Veuillez entrer le token de la liste privé dont vous voulez accéder</p>
             <form method="post" action="$url">
             <br><input type="text" name="input"><br>
-            <br><button class='btn btn-outline-dark text-light' id="button" role='button' type="submit">Acceder à la liste</button></form>
+            <br><button class='btn btn-info text-light' id="button" role='button' type="submit">Acceder à la liste</button></form>
             END;
         }
         return($vue->getNav().$res.$vue->getFooter());

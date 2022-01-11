@@ -48,7 +48,7 @@ class VueHTML{
                 </style>
             </head>
             
-            <body class="bg-secondary">
+            <body class="">
             <!-- Barre de Navigation -->
             <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
                 <div class="container px-0 px-lg-0">
@@ -89,9 +89,9 @@ class VueHTML{
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
             
             <!-- Footer : aubout us + Fonctionnalités réalisées -->
-            <footer class="py-1 bg-dark text-center">
-                <a class="btn btn-outline-secondary" href="$urlInfo" role="button">A propos de nous</a>
-                <a role="button" class="btn btn-outline-secondary" href="$urlFonctionnalites">Fonctionnalités réalisées</a>
+            <footer class="bg-dark text-center p-3">
+                <a class="btn btn-light m-2" href="$urlInfo" role="button">A propos de nous</a>
+                <a role="button" class="btn btn-light m-2" href="$urlFonctionnalites">Fonctionnalités réalisées</a>
                 <div class="container"><p class="m-0 text-center text-white">Copyright &copy; JLS</p></div>
             </footer>
             </body>

@@ -24,7 +24,7 @@ class VueConnexion{
                     <p></p>
                     <input type='submit' name='submit'>
                     </form>
-                    <p></p><a class='btn btn-outline-dark text-light' href=$urlcreation role=button>Vous n'avez pas de compte ?</a>";
+                    <p></p><a class='btn btn-info text-light' href=$urlcreation role=button>Vous n'avez pas de compte ?</a>";
 
             if (isset($_GET['submit'])) {
                 $nom = $_GET['nom'];
@@ -62,7 +62,7 @@ class VueConnexion{
                 <p></p>
                 <input type='submit' name='submit'>
                 </form>
-                <p></p><a class='btn btn-outline-dark text-light' href=$urlcreation role=button>Vous avez déjà un compte ?</a>";
+                <p></p><a class='btn btn-info text-light' href=$urlcreation role=button>Vous avez déjà un compte ?</a>";
                 if (isset($_GET['submit'])) {
                     $name = $_GET['name'];
                     $pswd = $_GET['pswd'];
