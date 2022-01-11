@@ -23,17 +23,20 @@ class VueListes{
         $vue = new VueHTML($this->c);
 
         if($token==null){
+            $compteur = 0;
             foreach($tab_v as $it){
+                $compteur++;
                 if($it->publique != '0'){
                     $url = $this->c->router->pathFor( 'listeUnite', ['no'=> $it->token] ) ;
-                    $ph.= "<a class='link-info' href='".$url."'> " . $it->titre . "</a><br>";
+                    $ph.= "liste n°$compteur :   <a class='link-info m-3' href='".$url."'> " . $it->titre . "</a>$it->expiration<br>";
+
                 }
             }
             $res = <<<END
                         <body>
                                 <h1>Listes publiques</h1>
                                 
-                                <p>$ph</p>
+                                <div class="text-start container w-50">$ph</div>
                                 
                         </body>
                      
