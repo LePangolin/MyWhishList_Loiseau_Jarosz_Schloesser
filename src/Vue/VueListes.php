@@ -89,6 +89,7 @@ class VueListes{
     function afficherPerso($idUser=null){
         $vue = new VueHTML($this->c);
         $url = $this->c->router->pathFor("AccesList");
+        $ph="";
         if ($idUser==null){
             $res = <<<END
             <p></p><br>
