@@ -28,7 +28,7 @@ class VueListes{
                 $compteur++;
                 if($it->publique != '0'){
                     $url = $this->c->router->pathFor( 'listeUnite', ['no'=> $it->token] ) ;
-                    $ph.= "<p>liste n°$compteur :   <a class='link-info m-3' href='".$url."'> " . $it->titre . "</a>$it->expiration</p><br>";
+                    $ph.= "<p>liste n°$compteur : <a class='link-info m-3' href='".$url."'> " . $it->titre . "</a>$it->expiration</p><br>";
 
                 }
             }
@@ -105,8 +105,9 @@ class VueListes{
             foreach($tab_v as $it){
                 if($it->user_id == $idUser){
                     $url2 = $this->c->router->pathFor( 'listeUnite', ['no'=> $it->token]);
-                    $ph = "<a class='link-info m-3' href='".$url2."'> " . $it->titre . "</a>
-                            <a class='link-info' href='".$url2."'>  modifier la liste </a><br>";
+                    $ph = "<a class='link-info m-2' href='".$url2."'> " . $it->titre ."</a>
+                            <a >token : $it->token</a>
+                            <a class='link-info' href='".$url2."'>  modifier la liste</a><br>";
                 }
             }
             $res = <<<END

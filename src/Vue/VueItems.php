@@ -62,9 +62,8 @@ class VueItems{
                         
                                 <p>$ph</p>
                                 
-                                <a class='btn btn-outline-dark text-light' href=$tabUrl[1] role=button>Retour à la liste</a>
+                                <a class='btn btn-info text-light' href=$tabUrl[1] role=button>Retour à la liste</a>
                         </body>
                      </html>".$vue->getFooter());
-
     }
 }
