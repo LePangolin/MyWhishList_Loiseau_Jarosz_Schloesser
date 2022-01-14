@@ -45,7 +45,6 @@ class VueListes{
         } else {
 
 
-
             foreach($tab_v as $li){
 
                 if($li->token == $token){
