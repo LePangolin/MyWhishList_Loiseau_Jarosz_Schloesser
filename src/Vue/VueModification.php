@@ -72,7 +72,7 @@ class VueModification{
                         <input type="submit" name="suppr" class="btn btn-primary">
                     </form>
                     </div>
-                    </div>
+                    </div> 
             ';
 
             if(isset($_GET['submit'])){
