@@ -45,6 +45,7 @@ class VueListes{
         } else {
 
 
+
             foreach($tab_v as $li){
 
                 if($li->token == $token){
@@ -69,30 +70,12 @@ class VueListes{
                 }
             }
             
-            Authentication::init();
-            $pdo = Authentication::$connexion;
-            $query = "Select userid from liste where token = ?";
-            $st = $pdo->prepare($query)->execute([$token]);
-            $row = $st->fetch(PDO::FETCH_ASSOC);
-            $uid = $row['userid'];
-            if(isset($_SESSION['profile'])){
-                if($uid == $_SESSION['profile']['userid']){
-                    $res = <<<END
-                    <container>
-                        <p>$infoListe $ph</p>
-                        <p><a class='btn btn-info text-light' href="$tabUrl[1]" role='button'>Voir un autre exemple de liste</a></p>
-                        <p><a class='btn btn-info text-light' href="" role='button'>Ajouter un item à la liste</a></p> 
-                    </container>
-                    END;
-                }
-            }else{
-            $res = <<<END
+                $res = <<<END
                 <container>
                     <p>$infoListe $ph</p>
                     <p><a class='btn btn-info text-light' href="$tabUrl[1]" role='button'>Voir un autre exemple de liste</a></p>
                 </container>
                 END;
-            }
         }
 
         return($vue->getNav().$res.$vue->getFooter());
