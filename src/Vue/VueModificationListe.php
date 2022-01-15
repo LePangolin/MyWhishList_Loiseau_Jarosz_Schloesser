@@ -71,6 +71,39 @@ class VueModificationListe{
                                 <br>
                                 <input type='submit' name='sub'>
                             </form>
+                            <br>
+                            <h1>Modification</h1>
+                            <form method='get'>
+                                <div class='mb-3'>
+                                    <label class='form-label'>Nom</label>
+                                </div>
+                                <input type='text' name='newName'>
+                                <input type='submit' name='subName'>
+                            </form>
+                                <br>
+                            <form method='get'>
+                                <div class='mb-3'>
+                                    <label class='form-label'>description</label>
+                                </div>
+                                <input type='text' name='descri'>
+                                <input type='submit' name='subDescr'>
+                            </form>
+                                <br>
+                            <form method='get'>
+                                <div class='mb-3'>
+                                    <label class='form-label'>date</label>
+                                </div>
+                                <input type='date' name='date'>
+                                <input type='submit' name='subDate'>
+                            </form>
+                                <br>
+                            <form method='get'>
+                                 <div class='mb-3'>
+                                    <label class='form-label'>commentaire</label>
+                                </div>
+                                <input type='text' name='comment'>
+                                <input type='submit' name='subCom'>
+                            </form>
                         </div>
                     </div>";
 
@@ -109,6 +142,34 @@ class VueModificationListe{
                 $response->withRedirect($this->c->router->pathfor('home'))
                 );
             }
+        }
+
+        if (isset($_GET['subName'])){
+            Authentication::init();
+            $pdo = Authentication::$connexion;
+            $query4 = "Update liste set titre = ? where token = ?";
+            $pdo->prepare($query4)->execute([$_GET['newName'],$token]);
+        }
+
+        if (isset($_GET['subDescr'])){
+            Authentication::init();
+            $pdo = Authentication::$connexion;
+            $query4 = "Update liste set description = ? where token = ?";
+            $pdo->prepare($query4)->execute([$_GET['descri'],$token]);
+        }
+
+        if (isset($_GET['subDate'])){
+            Authentication::init();
+            $pdo = Authentication::$connexion;
+            $query4 = "Update liste set expiration = ? where token = ?";
+            $pdo->prepare($query4)->execute([$_GET['date'],$token]);
+        }
+
+        if (isset($_GET['subCom'])){
+            Authentication::init();
+            $pdo = Authentication::$connexion;
+            $query4 = "Update liste set commentaire = ? where token = ?";
+            $pdo->prepare($query4)->execute([$_GET['comment'],$token]);
         }
 
 
