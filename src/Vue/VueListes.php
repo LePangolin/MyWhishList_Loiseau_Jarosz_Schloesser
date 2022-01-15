@@ -47,7 +47,7 @@ class VueListes{
             foreach($tab_v as $li){
 
                 if($li->token == $token){
-                    $infoListe="<h1>$li->titre</h1><h2>$li->description</h2>";
+                    $infoListe="<h1>$li->titre</h1><h2>$li->description</h2><h3>date d'échéance : $li->expiration</h3>";
                     $no = $li->no;
                 }
             }
