@@ -11,6 +11,11 @@ class VueConnexion{
         $this->c = $c;
     }
 
+    /** Méthode qui permet de afficher la page html correspondant
+     * à la page de connexion au site, grâce à un utilisateur
+     * @param Response $response
+     * @return Response|string
+     */
     public function afficherConnexion(Response $response){
         $vue = new VueHTML($this->c);
         $urlcreation = $this->c->router->pathfor("Creation de compte");
@@ -33,7 +38,7 @@ class VueConnexion{
                         </form>
                     </div>
                     <p></p><a class='btn btn-info text-light' href=$urlcreation role=button>Vous n'avez pas de compte ?</a>";
-
+        //Lorsque l'on submit on récupère le nom d'utilisateur et le mdp puis on procède à une authentification
             if (isset($_GET['submit'])) {
                 $nom = $_GET['nom'];
                 $mdp = $_GET['mdp'];
@@ -57,9 +62,15 @@ class VueConnexion{
         );
     }
 
+    /** Méthode qui permet d'afficher la page de création d'un compte, grâce à un nom et un mdp
+     * @param Response $response
+     * @return Response|string
+     */
     public function creerUnCompte(Response $response){
+            $er="";
             $vue = new VueHTML($this->c);
             $urlcreation = $this->c->router->pathfor("Connexion");
+        //Si aucun utilisateur est connecter sur la session alors il peut créer un compte
             if(!isset($_SESSION['profile'])){
                 $ph = "
                 <br><h1>Créer un compte</h1><br>   
@@ -81,15 +92,20 @@ class VueConnexion{
                 </div>
                 
                 <p></p><a class='btn btn-info text-light' href=$urlcreation role=button>Vous avez déjà un compte ?</a>";
+            //Si on submit on récupère le mdp et le nom d'utilisateur, on regarde si le mdp convient
                 if (isset($_GET['submit'])) {
                     $name = $_GET['name'];
                     $pswd = $_GET['pswd'];
-                    Authentication::init();
-                    Authentication::createUser($name, $pswd);
-                    Authentication::authenticate($name, $pswd);
-                    return(
-                    $response->withRedirect($this->c->router->pathfor('home'))
-                    );
+                    if(strlen($pswd) < 10){
+                        $er="<p>Attention : Mot de passe trop court !</p>";
+                    }else{
+                        Authentication::init();
+                        Authentication::createUser($name, $pswd);
+                        Authentication::authenticate($name, $pswd);
+                        return(
+                        $response->withRedirect($this->c->router->pathfor('home'))
+                        );
+                    }
                 }
         }else{
             $nom = $_SESSION['profile']['username'];
@@ -99,12 +115,16 @@ class VueConnexion{
 
             $vue->getNav()."
                         <body>
-                           $ph
+                           $ph.
+                           $er
                         </body>
                      ".$vue->getFooter()
         );
     }
 
+    /** Méthode qui permet de déconnecter un uti de la session
+     * @return string
+     */
     public function deconnexion(){
         $vue = new VueHTML($this->c);
         $urlcreation = $this->c->router->pathfor("Deconnexion");
