@@ -19,6 +19,6 @@ class ControlleurModificationListe{
 
     function ajout(Request $request, Response $response, array $array){
         $vue = new VueModificationListe($this->c);
-        return $vue->ajout($array['no']);
+        return $vue->ajout($response,$array['no']);
     }
 }

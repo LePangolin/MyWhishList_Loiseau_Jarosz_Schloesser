@@ -1,6 +1,7 @@
 <?php
 namespace wishlist\Vue;
 
+use Psr\Http\Message\ResponseInterface as Response;
 use PDO;
 use Slim\Container;
 use wishlist\Authentificateur\Authentication;
@@ -17,7 +18,7 @@ class VueModificationListe{
         $this->c = $c;
     }
 
-    function ajout($token = null){
+    function ajout(Response $response, $token = null){
         $vue = new VueHTML($this->c);
         $ajoutIt = "<br>
                     <br>
@@ -59,6 +60,18 @@ class VueModificationListe{
                                 <input type='submit' name='submit'>
                             </form>
                         </div>
+                        <div class='col'>
+                            <h1>Suppression de la liste</h1>
+                            <form method='get'>
+                                 <div class='mb-3'>
+                                    <label class='form-label'>Entrez votre mot de passe pour confirmer</label>
+                                </div>
+                                <input type='password' name='pswd'>
+                                <br>
+                                <br>
+                                <input type='submit' name='sub'>
+                            </form>
+                        </div>
                     </div>";
 
         if(isset($_GET['submit'])){
@@ -77,6 +90,25 @@ class VueModificationListe{
             $query3 = "insert into item values(?,?,?,?,?,?,?)";
             $st =  $pdo->prepare($query3);
             $st->execute([$id,$idlis,$_GET['nomIt'],$_GET['descr'],$_GET['img'],$_GET['url'],$_GET['tarif']]);
+        }
+
+        if(isset($_GET['sub'])){
+            Authentication::init();
+            $pdo = Authentication::$connexion;
+            $mdp = hash('md5',$_GET['pswd']);
+            $query2 = 'Select passwd from users where uid = ?';
+            $st2 = $pdo->prepare($query2);
+            $st2->execute([$_SESSION['profile']['userid']]);
+            $row = $st2->fetch(PDO::FETCH_ASSOC);
+            if($mdp != $row['passwd']){
+                echo "<script>alert(\"Le mot de passe ne correspond pas\")</script>";
+            }else{
+                $query3 = "delete from liste where token = ?";
+                $pdo->prepare($query3)->execute([$token]);
+                return (
+                $response->withRedirect($this->c->router->pathfor('home'))
+                );
+            }
         }
 
 
