@@ -22,7 +22,6 @@ class VueListes{
 
 
         $vue = new VueHTML($this->c);
-
         if($token==null){
             $compteur = 0;
             foreach($tab_v as $it){
@@ -47,7 +46,7 @@ class VueListes{
             foreach($tab_v as $li){
 
                 if($li->token == $token){
-                    $infoListe="<h1>$li->titre</h1><h2>$li->description</h2>";
+                    $infoListe="<h1>$li->titre</h1><h2>$li->description</h2><h3>date d'échéance : $li->expiration</h3><h4>$li->commentaire</h4>";
                     $no = $li->no;
                 }
             }

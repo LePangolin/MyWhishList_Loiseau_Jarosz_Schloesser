@@ -50,13 +50,12 @@ class VueItems{
                         $ph.="<p>L'item n'est pas réservé</p>               
                             <a href='".$urlr."'>Je veux le réserver !</a>";
                     } else {
-                        /*la date d'échéance est passée et
-                        l'utilisateur est le créateur de la liste on affiche les infos de la reservation*/
                         foreach ($tab_l as $liste){
                             if($liste->no == $it->liste_id){
                                 if(isset($_SESSION["profile"])){
-                                    if($_SESSION["profile"]["userid"] == $liste->user_id && $liste->expiration<date("F j, Y, a")){
-                                        $ph.="<p>$nom $commentaire</p>";
+                                    date_default_timezone_set('UTC');
+                                    if($_SESSION["profile"]["userid"] == $liste->user_id && $liste->expiration<date("Y-m-d")){
+                                        $ph.="<p>$nom: $commentaire</p>";
                                     } else {
                                         $ph.="<p>L'item est déjà réservé</p>";
                                     }
