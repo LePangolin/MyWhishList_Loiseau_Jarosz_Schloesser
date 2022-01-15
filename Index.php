@@ -45,6 +45,9 @@ $app->post('/utilisateur/', ControlleurListes::class.':afficherListeToken');
 $app->get('/liste/[/]', ControlleurListes::class.':afficherToutesListes')
     ->setName("listeAll");
 
+$app->get('/utilisateur/{no}/modification[/]',\wishlist\Controlleur\ControlleurModificationListe::class.':ajout')
+    ->setName("Modification");
+
 /**
  * Connexion
  */

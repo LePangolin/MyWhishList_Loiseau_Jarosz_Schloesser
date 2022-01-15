@@ -106,9 +106,10 @@ class VueListes{
             foreach($tab_v as $it){
                 if($it->user_id == $idUser){
                     $url2 = $this->c->router->pathFor( 'listeUnite', ['no'=> $it->token]);
+                    $url3 = $this->c->router->pathFor('Modification',['no'=> $it->token]);
                     $ph = "<a class='link-info m-2' href='".$url2."'> " . $it->titre ."</a>
                             <a >token : $it->token</a>
-                            <a class='link-info' href='".$url2."'>  modifier la liste</a><br>";
+                            <a class='link-info' href='".$url3."'>modifier la liste</a><br>";
                 }
             }
             $res = <<<END
