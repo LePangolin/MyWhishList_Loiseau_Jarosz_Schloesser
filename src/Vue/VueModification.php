@@ -21,7 +21,7 @@ class VueModification{
             $php = '
                     <br>
                     <br>
-                    <div class="row align-items-start">
+                    <div class="row align-items-start w-100">
                     <div class="col">
                         <h1>Modifier votre mot de passe</h1>
                         <br>

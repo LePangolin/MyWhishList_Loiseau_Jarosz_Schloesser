@@ -20,19 +20,41 @@ class VueModificationListe{
         $vue = new VueHTML($this->c);
         $ajoutIt = "<br>
                     <br>
-                    <div class='row align-items-start'>
+                    <div class='row align-items-start w-100'>
                         <div class='col'>
-                            <form>
+                            <form method='get'>
+                                <h1>Ajouter un item</h1>
+                                <br>
                                 <div class='mb-3'>
                                     <label class='form-label'>Nom de l'item</label>
                                 </div>
                                 <input type='text' name='nomIt'>
                                 <br>
                                 <br>
-                                $token
+                                <div class='mb-3'>
+                                    <label class='form-label'>Description de l'item</label>
+                                </div>
+                                <textarea name='descr'></textarea>
+                                <br>
+                                <br>
+                                <div class='mb-3'>
+                                    <label class='form-label'>image</label>
+                                </div>
+                                <input type='text' name='img'>
+                                <br>
+                                <br>
+                                <div class='mb-3'>
+                                    <label class='form-label'>url</label>
+                                </div>
+                                <input type='text' name='url'>
+                                <br>
+                                <br>
+                                <input type='submit' name='submit'>
                             </form>
                         </div>
                     </div>";
+
+
 
         return(
           $vue->getNav()."<body>$ajoutIt</body>".$vue->getFooter()
