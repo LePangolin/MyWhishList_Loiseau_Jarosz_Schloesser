@@ -37,8 +37,7 @@ class ControlleurItems{
     }
 
     function afficherReservation(Request $request, Response $response, array $array): string{
-        $id = $array['id'];
         $vue = new VueReservation($this->c);
-        return $vue->afficher($id);
+        return $vue->afficher($array['id']);
     }
 }

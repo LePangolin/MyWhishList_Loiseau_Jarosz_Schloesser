@@ -9,6 +9,7 @@ use wishlist\Authentificateur\Authentication;
 class VueReservation
 {
     private Container $container;
+
     public function __construct(Container $c)
     {
         $this->container = $c;
@@ -16,6 +17,8 @@ class VueReservation
 
     function afficher($id){
         $vue = new VueHTML($this->container);
+
+
         if(isset($_SESSION['profile'])){
             $php = '<!DOCTYPE html>
                         <html>
@@ -45,10 +48,11 @@ class VueReservation
 
                 $insertRecipe->execute();
                 $row = $insertRecipe->fetch(PDO::FETCH_ASSOC);
+
                 $idreserv = $row['idreservation'];
                 $idreserv ++;
                 $sqlQuery = 'INSERT INTO reservation(idreservation, userid, nom, commentaire, iditem)  
-                VALUES (:idreservation, :userid, :nom, :commentair, :iditem)';
+                VALUES (:idreservation, :userid, :nom, :commentaire, :iditem)';
 
                 $insertRecipe = $pdo->prepare($sqlQuery);
                 $insertRecipe->execute([
@@ -56,12 +60,14 @@ class VueReservation
                     'userid' => $_SESSION['profile']['userid'],
                     'nom' => htmlspecialchars($_GET['nom']),
                     'commentaire' => htmlspecialchars($_GET['commentaire']),
-                    'iditem' => $id
+                    'iditem' => htmlspecialchars($id)
                 ]);
+
+                $php.="<p>L'item est bien réservé ! </p>";
 
             }
         }else{
-            $php = "<p>Vous devez être connecter pour crée une liste</p>";
+            $php = "<p>Vous devez être connecter pour réservé un item</p>";
         }
         return ($vue->getNav(). $php . $vue->getFooter());
     }
