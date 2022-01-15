@@ -31,6 +31,9 @@ use wishlist\Controlleur\ControlleurItems;
 /**
  * liste
  */
+$app->get('/item/{id}/reservation[/]', ControlleurItems::class.':afficherReservation')
+    ->setName("reservation");
+
 $app->get('/liste/{no}/item/{id}[/]', ControlleurItems::class.':afficherUnItem')
     ->setName("itemUnite");
 

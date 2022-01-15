@@ -46,7 +46,9 @@ class VueItems{
                         }
                     }
                     if(!$estReserve){
-                        $ph.="<h1>Faire le formulaire</h1>";
+                        $urlr = $this->c->router->pathFor( 'reservation', ['id' => $it->id]) ;
+                        $ph.="<p>L'item n'est pas réservé</p>               
+                            <a href='".$urlr."'>Je veux le réserver !</a>";
                     } else {
                         /*la date d'échéance est passée et
                         l'utilisateur est le créateur de la liste on affiche les infos de la reservation*/

@@ -7,6 +7,7 @@ use Slim\Container;
 use wishlist\Models\Item as Items;
 use wishlist\Models\Reservation as Reservation;
 use wishlist\Vue\VueItems;
+use wishlist\Vue\VueReservation;
 
 
 class ControlleurItems{
@@ -33,5 +34,11 @@ class ControlleurItems{
         $no = $array['no'];
         $vue = new VueItems($this->c);
         return $vue->afficherItem($id, $no);
+    }
+
+    function afficherReservation(Request $request, Response $response, array $array): string{
+        $id = $array['id'];
+        $vue = new VueReservation($this->c);
+        return $vue->afficher($id);
     }
 }
