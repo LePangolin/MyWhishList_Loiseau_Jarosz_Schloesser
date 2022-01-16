@@ -53,19 +53,20 @@ class VueListes{
 
             $tab_r=ControlleurItems::toutReservation();
             foreach ($tab_i as $item){
-                if($item->liste_id == $no){
-
-                }
                 $url = $this->c->router->pathFor( 'itemUnite' , ['no'=> $token, 'id' => $item->id]);
-                foreach ($tab_r as $reservation){
-                    if($item->liste_id == $no){
-                        $ph .= "<div class='border-bottom border-dark w-50 mx-auto'><h3>"  . $item->nom . "</h3>
-                        <img style='width: 200px;' src=/MyWishList_Jarosz_Loiseau_Schloesser/img/".$item->img.">";
+                if($item->liste_id == $no){
+                    $ph .= "<div class='border-bottom border-dark w-50 mx-auto'><h3>"  . $item->nom . "</h3>
+                    <img style='width: 200px;' src=/MyWishList_Jarosz_Loiseau_Schloesser/img/".$item->img.">";
+                    $reserver = false;
+                    foreach ($tab_r as $reservation) {
                         if($item->id == $reservation->iditem){
-                            $ph.= "<p>état de réservation : réservé<br>"."<a href=$url class='link-info'> en savoir plus </a></p></div>";
-                        } else {
-                            $ph.= "<p>état de réservation : non réservé<br>"."<a href=$url class='link-info'> en savoir plus </a></p></div>";
+                            $reserver = true;
                         }
+                    }
+                    if($reserver){
+                        $ph.= "<p>état de réservation : réservé<br>"."<a href=$url class='link-info'> en savoir plus </a></p></div>";
+                    } else {
+                        $ph.= "<p>état de réservation : non réservé<br>"."<a href=$url class='link-info'> en savoir plus </a></p></div>";
                     }
                 }
             }
