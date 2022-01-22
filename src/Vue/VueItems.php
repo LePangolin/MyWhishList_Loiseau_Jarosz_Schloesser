@@ -13,7 +13,7 @@ class VueItems{
         $this->c = $c;
     }
 
-    function afficherItem($id=null, $no){
+    function afficherItem($no, $id=null){
         $tab_v = ControlleurItems::toutItems();
 
         $vue = new VueHTML($this->c);
@@ -37,7 +37,8 @@ class VueItems{
                 if($it->id == $id){
                     $ph = "<h2>$it->nom</h2>".
                         "<img style='width: 200px;' src=/MyWishList_Jarosz_Loiseau_Schloesser/img/".$it->img.">".
-                        "<p>$it->descr, prix : $it->tarif</p>";
+                        "<p>$it->descr, prix : $it->tarif</p>".
+			"<p>$it->url<p>";
                     foreach ($tab_r as $reservation){
                         if ($reservation->iditem == $it->id){
                             $estReserve=true;
