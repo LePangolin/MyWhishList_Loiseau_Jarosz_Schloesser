@@ -26,7 +26,7 @@ class VueListes{
             $compteur = 0;
             foreach($tab_v as $it){
                 $compteur++;
-                if($it->publique != '0'){
+                if($it->publique == '1'){
                     $url = $this->c->router->pathFor( 'listeUnite', ['no'=> $it->token] ) ;
                     $ph.= "<p>liste n°$compteur : <a class='link-info m-3' href='".$url."'> " . $it->titre . "</a>$it->expiration</p><br>";
 

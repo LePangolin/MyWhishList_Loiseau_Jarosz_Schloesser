@@ -104,6 +104,13 @@ class VueModificationListe{
                                 <input type='text' name='comment'>
                                 <input type='submit' name='subCom'>
                             </form>
+                            <form method='get'>
+                                <br>
+                                <label class='form-label'>Publique</label>
+                                <input type='checkbox' name='etat'>
+                                <input type='submit' name='subEtat'>
+                            </form>
+                            
                         </div>
                     </div>";
 
@@ -171,6 +178,18 @@ class VueModificationListe{
             $query4 = "Update liste set commentaire = ? where token = ?";
             $pdo->prepare($query4)->execute([$_GET['comment'],$token]);
         }
+        if (isset($_GET['subEtat'])){
+            Authentication::init();
+            $pdo = Authentication::$connexion;
+            $query4 = "Update liste set publique = ? where token = ?";
+            if(strcmp($_GET['etat'],"on") == 0){
+                $pub = 1 ;
+            }else{
+                $pub = 0;
+            }
+            $pdo->prepare($query4)->execute([$pub,$token]);
+        }
+
 
 
 

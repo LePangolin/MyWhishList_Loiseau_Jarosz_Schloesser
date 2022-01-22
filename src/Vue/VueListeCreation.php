@@ -53,8 +53,8 @@ class VueListeCreation
             $row = $insertRecipe->fetch(PDO::FETCH_ASSOC);
             $noliste = $row['no'];
             $noliste ++;
-            $sqlQuery = 'INSERT INTO liste(no, user_id, titre, description, expiration, token)  
-            VALUES (:no, :user_id, :titre, :description, :expiration, :token)';
+            $sqlQuery = 'INSERT INTO liste(no, user_id, titre, description, expiration, token, publique)  
+            VALUES (:no, :user_id, :titre, :description, :expiration, :token, :publique)';
             $token =  bin2hex(random_bytes(8));
 
                 $insertRecipe = $pdo->prepare($sqlQuery);
@@ -64,7 +64,8 @@ class VueListeCreation
                     'titre' => htmlspecialchars($_GET['titre']),
                     'description' => htmlspecialchars($_GET['descr']),
                     'expiration' => htmlspecialchars($_GET['date']),
-                    'token' => $token
+                    'token' => $token,
+                    'publique' => 0
                 ]);
 
         }
